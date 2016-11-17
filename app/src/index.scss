@@ -1,0 +1,166 @@
+// bower:scss
+// endbower
+$icon-font-path: '../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/';
+$fa-font-path: '../../bower_components/font-awesome/fonts';
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../../bower_components/font-awesome/scss/font-awesome";
+@import "layouts/layouts";
+// @import "treeTable/treeTable";
+@import "designer/designer";
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.site-sidebar {
+  background-color: #106CC8;
+  height: 100%;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+  color: #fff;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-navs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    li.active {
+      background-color: #267ED5;
+    }
+    & > li.parent-menu {
+      border-bottom: 1px solid #267ED5;
+      & > h2 {
+        color: rgba(255, 255, 255, 0.54);
+        font-size: 16px;
+        padding: 8px 16px;
+        margin: 0;
+      }
+      & > ul.sub-navs {
+        padding: 0;
+        list-style: none;
+        li > a {
+          line-height: 40px;
+          padding: 0 16px;
+          font-size: 14px;
+          display: block;
+        }
+        & > li {
+          & > ul.sub-navs {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            & > li {
+              & > a {
+                padding: 0 0 0 32px;
+              }
+            }
+          }
+        }
+      }
+      & > a {
+        display: block;
+        line-height: 40px;
+        padding: 0 16px;
+        position: relative;
+      }
+      &.has-child {
+        & > a:before {
+          content: "\e259";
+          font-family: 'Glyphicons Halflings';
+          float: right;
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+  .site-logo {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #267ED5;
+    cursor: pointer;
+    .site-logo-name {
+      font-size: 26px;
+      font-weight: 400;
+    }
+  }
+}
+
+.site-main {
+  height: 100%;
+}
+
+.site-navbar {
+  position: relative;
+  line-height: 64px;
+  padding: 0 16px;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 0px 2px 2px rgba(0, 0, 0, 0.098), 0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+  z-index: 3;
+  background: #f6f6f6;
+  color: #202020;
+  .site-breadcrumb {
+    font-size: 24px;
+  }
+}
+
+.site-content {
+  padding: 16px;
+  overflow: auto;
+}
+//checkbox
+.ebp-checkbox {
+  & > input[type="checkbox"] {
+    display: none;
+    & + .lbl {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      cursor: pointer;
+      &:before {
+        cursor: pointer;
+        font-family: FontAwesome;
+        content: '\a0';
+        border: 1px solid #c8c8c8;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        display: inline-block;
+        text-align: center;
+        height: 16px;
+        line-height: 14px;
+        min-width: 16px;
+        margin-right: 1px;
+        position: relative;
+        vertical-align: middle;
+        color: #32a3ce;
+        font-size: 12px;
+      }
+
+      &:hover {
+        &:before {
+          border-color: #ff893c;
+        }
+      }
+    }
+
+    &:checked {
+      & + .lbl {
+        &:before {
+          content: '\f00c';
+        }
+      }
+    }
+  }
+}

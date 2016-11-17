@@ -1,0 +1,33 @@
+<p>布局模块可以为开发人员提供简单的布局方法(建议懂样式布局的自己通过样式布局, 不懂的在简单的情景下可以使用)</p>
+<p>
+    布局模块包括:
+    <ol>
+        <li>布局(ebp-layout)</li>
+        <li>布局容器(ebp-layout-container)</li>
+    </ol>
+</p>
+
+<p>
+    布局可以分为纵向(row)和横向(column)两种模式<br>
+    布局容器可以设置大小(size), 默认为自动大小, 如图:
+    <div class="row">
+        <div class="col-xs-6">
+            <div style="height: 200px">
+                <div ebp-layout style="color: #fff">
+                    <div ebp-layout-container style="background-color: red">纵向容器1</div>
+                    <div ebp-layout-container style="background-color: green">纵向容器2</div>
+                    <div ebp-layout-container style="background-color: blue">纵向容器3</div>
+                    <div ebp-layout-container="50" style="background-color: black">固定大小的纵向容器4</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div ebp-layout="column" style="color: #fff;height: 200px">
+                <div ebp-layout-container style="background-color: red;height: 100%">横向容器1</div>
+                <div ebp-layout-container style="background-color: green;height: 100%">横向容器2</div>
+                <div ebp-layout-container style="background-color: blue;height: 100%">横向容器3</div>
+                <div ebp-layout-container="200px" style="background-color: black;height: 100%">固定大小的横向容器4</div>
+            </div>
+        </div>
+    </div>
+</p>

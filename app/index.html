@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="ebpUIDemo">
+<head lang="zh">
+    <meta charset="UTF-8">
+    <title>EBP Report</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body>
+<div ebp-layout="column" ui-view="body">
+    <div class="site-sidebar" ebp-layout-container="272px">
+        <div ui-sref="main" class="site-logo">
+            <img src="assets/images/logo.svg" height="150" />
+            <h1 class="site-logo-name">EBP Report</h1>
+        </div>
+        <div class="site-menus">
+            <ul class="site-navs">
+                <li class="parent-menu">
+                    <h2>API参考手册</h2>
+                    <ul class="sub-navs">
+                        <li>
+                            <a ui-sref="layout">
+                                布局
+                            </a>
+                            <ul class="sub-navs">
+                                <li ui-sref-active="active">
+                                    <a ui-sref="layout.intro">简介</a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="layout.container">布局容器</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a ui-sref="treeTable">TreeTable</a>
+                            <ul class="sub-navs">
+                                <li ui-sref-active="active">
+                                    <a ui-sref="treeTable.intro">简介</a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a id="treeTableLink" ui-sref="treeTable.demo">例子</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a ui-sref="designer">报表设计器</a>
+                            <ul class="sub-navs">
+                                <li ui-sref-active="active">
+                                    <a ui-sref="designer.intro">简介</a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a id="designerLink" ui-sref="designer.demo">例子</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="site-main" ebp-layout-container>
+        <div ebp-layout>
+            <div class="site-navbar" ebp-layout-container="64px">
+                <span class="site-breadcrumb">Angular EBP Report Designer</span>
+                <span class="pull-right">
+                    <a href="https://github.com/yaoshining/ebp-report-designer" title="Install with Bower" style="margin-right: 10px">
+                        <img src="assets/images/bower-logo.svg" width="24" height="24" />
+                    </a>
+                    <a href="https://github.com/yaoshining/ebp-report-designer" title="View Source on Github">
+                        <img src="assets/images/github.svg" width="24" height="24" />
+                    </a>
+                </span>
+            </div>
+            <div class="site-content" ebp-layout-container>
+                <div ui-view class="height-100"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- build:js(src) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<!-- endbuild -->
+
+<!--<script src="../bower_components/mockjs/dist/mock.js"></script>-->
+<!--<script src="src/mock.data.js"></script>-->
+
+<!-- build:js({.tmp/serve,.tmp/partials}) scripts/app.js -->
+<!-- inject:js -->
+<!-- endinject -->
+</body>
+</html>
