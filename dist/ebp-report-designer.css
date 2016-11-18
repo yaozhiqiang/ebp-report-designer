@@ -256,12 +256,14 @@
         letter-spacing: 1px;
         font-weight: normal;
         border: none;
-        background: transparent; }
+        background: transparent;
+        padding: 0; }
         .designer-menu ul.nav-tabs > li > a:hover, .designer-menu ul.nav-tabs > li > a:active, .designer-menu ul.nav-tabs > li > a:focus {
           background: transparent;
           border: none;
           color: #ffffff;
-          font-weight: normal; }
+          font-weight: normal;
+          line-height: 39px; }
       .designer-menu ul.nav-tabs > li.active {
         border-bottom: 1px solid #43a6e9; }
   .designer-menu .menu-content {

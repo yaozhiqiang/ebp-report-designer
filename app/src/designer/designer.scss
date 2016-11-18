@@ -321,11 +321,13 @@
         font-weight: normal;
         border: none;
         background: transparent;
+        padding: 0;
         &:hover, &:active, &:focus {
           background: transparent;
           border: none;
           color: #ffffff;
           font-weight: normal;
+          line-height: 39px;
         }
       }
 
