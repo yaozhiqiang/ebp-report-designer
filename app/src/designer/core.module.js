@@ -11,7 +11,7 @@ import {ReportServiceFactory} from './services/report.service';
 import ReportDesignerDirectiveFacroty from './directives/designer.directive';
 import ReportWidgetDirectiveFacroty from './directives/widget.directive';
 
-let coreModule = angular.module('ebp.report.designer.core', ['ebp-ui', 'angular-yao-utils']);
+let coreModule = angular.module('ebp.report.designer.core', []);
 coreModule.constant('defaultSettings', config.treeTableSettings)
           .factory('reportDatasourceService', ReportDatasourceFactory)
           .factory('reportService', ReportServiceFactory)

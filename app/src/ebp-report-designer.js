@@ -5,7 +5,9 @@ import core from './designer/core.module';
 
 var ebpReportDesigner = angular.module('ebp.report.designer', [
     'ngResource',
-    core.name
+    core.name,
+    'ebp-ui',
+    'angular-yao-utils'
 ]);
 
 export default ebpReportDesigner;

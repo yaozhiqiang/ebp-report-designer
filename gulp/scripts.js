@@ -7,9 +7,14 @@ var path = require('path');
 var browserSync = require('browser-sync');
 var conf = require('./conf');
 var $ = require('gulp-load-plugins')();
+var wp = require('webpack');
+
 function webpack(watch, filename, destDir,callback) {
     var webpackOptions = {
         watch: watch,
+        resolve: {
+            modulesDirectories: ['node_modules', 'bower_components']
+        },
         module: {
             preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
             loaders: [{
@@ -31,7 +36,12 @@ function webpack(watch, filename, destDir,callback) {
                 '_': false
             }
         },
-        output: { filename: filename}
+        output: { filename: filename},
+        plugins: [
+            new wp.ResolverPlugin(
+                new wp.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main'])
+            )
+        ]
     };
 
     if(watch) {

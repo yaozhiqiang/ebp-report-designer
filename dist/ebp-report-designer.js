@@ -45,24 +45,24 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(1)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _core) {
-	  'use strict';
+	    'use strict';
 
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	    Object.defineProperty(exports, "__esModule", {
+	        value: true
+	    });
 
-	  var _core2 = _interopRequireDefault(_core);
+	    var _core2 = _interopRequireDefault(_core);
 
-	  function _interopRequireDefault(obj) {
-	    return obj && obj.__esModule ? obj : {
-	      default: obj
-	    };
-	  }
+	    function _interopRequireDefault(obj) {
+	        return obj && obj.__esModule ? obj : {
+	            default: obj
+	        };
+	    }
 
-	  var ebpReportDesigner = angular.module('ebp.report.designer', ['ngResource', _core2.default.name]); /**
-	                                                                                                       * Created by yao on 15/12/4.
-	                                                                                                       */
-	  exports.default = ebpReportDesigner;
+	    var ebpReportDesigner = angular.module('ebp.report.designer', ['ngResource', _core2.default.name, 'ebp-ui', 'angular-yao-utils']); /**
+	                                                                                                                                        * Created by yao on 15/12/4.
+	                                                                                                                                        */
+	    exports.default = ebpReportDesigner;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
@@ -114,7 +114,7 @@
 	          /**
 	           * Created by yaoshining on 16/3/1.
 	           */
-	          var coreModule = angular.module('ebp.report.designer.core', ['ebp-ui', 'angular-yao-utils']);
+	          var coreModule = angular.module('ebp.report.designer.core', []);
 	          coreModule.constant('defaultSettings', config.treeTableSettings).factory('reportDatasourceService', _datasource.ReportDatasourceFactory).factory('reportService', _report.ReportServiceFactory).controller('ChartPropsController', _chartsProps2.default).controller('TablePropsController', _tableProps2.default).controller('DatasourcePropsController', _datasourceProps2.default).directive('ebpReportWidget', _widget2.default).directive('ebpReportDesigner', _designer2.default);
 
 	          coreModule.run(function (yaoGuid) {
@@ -2974,6 +2974,11 @@
 	            var result = res.data,
 	                data = result.data;
 	            elem.height(400);
+	            if (typeof interact === 'undefined') {
+	                if (angular.isFunction(requirejs)) {
+	                    window.echarts = requirejs('echarts');
+	                }
+	            }
 	            var chart = echarts.init(elem[0]),
 	                config = widget.config;
 	            var xAxis = [];

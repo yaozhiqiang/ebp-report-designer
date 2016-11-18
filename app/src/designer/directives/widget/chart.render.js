@@ -7,6 +7,11 @@ export function renderChart(elem, widget, $http) {
         const result = res.data,
             data = result.data;
         elem.height(400);
+        if(typeof interact === 'undefined') {
+            if(angular.isFunction(requirejs)) {
+                window.echarts = requirejs('echarts');
+            }
+        }
         const chart = echarts.init(elem[0]),
             config = widget.config;
         let xAxis = [];
