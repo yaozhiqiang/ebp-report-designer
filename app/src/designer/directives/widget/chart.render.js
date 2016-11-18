@@ -1,15 +1,15 @@
 /**
  * Created by yaoshining on 2016/11/7.
  */
-export function renderChart(elem, widget, $http) {
+export function renderChart(elem, widget, $http, $window) {
     'ngInject';
     $http.get('/data/reports/salesVolumn.json').then(res => {
         const result = res.data,
             data = result.data;
         elem.height(400);
         if(typeof interact === 'undefined') {
-            if(angular.isFunction(requirejs)) {
-                window.echarts = requirejs('echarts');
+            if($window.requirejs && angular.isFunction($window.requirejs)) {
+                $window.echarts = requirejs('echarts');
             }
         }
         const chart = echarts.init(elem[0]),

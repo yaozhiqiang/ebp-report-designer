@@ -2967,7 +2967,7 @@
 	    /**
 	     * Created by yaoshining on 2016/11/7.
 	     */
-	    function renderChart(elem, widget, $http) {
+	    function renderChart(elem, widget, $http, $window) {
 	        'ngInject';
 
 	        $http.get('/data/reports/salesVolumn.json').then(function (res) {
@@ -2975,8 +2975,8 @@
 	                data = result.data;
 	            elem.height(400);
 	            if (typeof interact === 'undefined') {
-	                if (angular.isFunction(requirejs)) {
-	                    window.echarts = requirejs('echarts');
+	                if ($window.requirejs && angular.isFunction($window.requirejs)) {
+	                    $window.echarts = requirejs('echarts');
 	                }
 	            }
 	            var chart = echarts.init(elem[0]),
