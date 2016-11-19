@@ -7,7 +7,7 @@ export function renderChart(elem, widget, $http, $window) {
         const result = res.data,
             data = result.data;
         elem.height(400);
-        if(typeof interact === 'undefined') {
+        if(typeof echarts === 'undefined') {
             if($window.requirejs && angular.isFunction($window.requirejs)) {
                 $window.echarts = requirejs('echarts');
             }
