@@ -28,14 +28,19 @@ function browserSyncInit(baseDir, browser) {
         routes: routes
     };
 
-    //server.middleware = proxyMiddleware('/data', {
-    //    target: 'http://localhost:8080'
-    //});
+    var proxy1 = proxyMiddleware('/pms', {
+        target: 'http://176.18.3.11:8082'
+    });
+
+    var proxy2 = proxyMiddleware('/plt', {
+        target: 'http://176.18.3.11:8080'
+    });
 
     browserSync.instance = browserSync.init({
         startPath: '/',
         server: server,
-        browser: browser
+        browser: browser,
+        middleware: [proxy1, proxy2]
     });
 }
 

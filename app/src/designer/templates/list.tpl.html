@@ -1,0 +1,59 @@
+<div class="report-list-header">
+    <div>
+        <h5 class="v-line-title">报表分组</h5>
+        <ul class="report-groups">
+            <li ng-class="{active: selectedGroupId === group.id}" ng-repeat="group in groups track by group.id">
+                <a ng-click="changeGroup(group)">{{group.name}}</a>
+            </li>
+        </ul>
+        <span class="pull-right">
+                    <span class="btn btn-light-grey">
+                        <i class="fa fa-refresh"></i>刷新
+                    </span>
+                    <button class="btn btn-info" ui-sref="collaborate.reports.add">创建报表</button>
+                </span>
+    </div>
+    <div>
+        <form class="form-inline">
+            <select class="form-control">
+                <option>按创建时间排序</option>
+                <option>按修改时间排序</option>
+                <option>按报表名称排序</option>
+            </select>
+            <div class="form-group">
+                <input type="text" class="form-control text-input" placeholder="按报表名称搜索">
+            </div>
+            <button class="btn btn-info">搜索</button>
+        </form>
+    </div>
+</div>
+<div class="report-list-body">
+    <ul class="report-list">
+        <li ng-repeat="report in reports track by report.id">
+            <div class="report-list-item">
+                <div class="item-title">
+                    <span>{{report.reportName}}</span>
+                </div>
+                <div class="item-actions">
+                            <span class="item-action">
+                                <a ui-sref="collaborate.reports.edit({reportId: 123})">
+                                    <i class="fa fa-pencil"></i>修改
+                                </a>
+                            </span>
+                    <span class="item-action" ng-click="preview(report.reportDef)">
+                                <i class="fa fa-eye"></i>查看
+                            </span>
+                    <span class="item-action">
+                                <i class="fa fa-external-link"></i>导出
+                            </span>
+                    <span class="item-action">
+                                <i class="fa fa-files-o"></i>复制
+                            </span>
+                    <span class="item-action red">
+                                <i class="fa fa-trash"></i>删除
+                            </span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

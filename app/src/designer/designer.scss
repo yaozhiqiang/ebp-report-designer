@@ -1,6 +1,13 @@
 @import '../layouts/layouts';
 
 .report-list-header {
+
+  .btn.btn-light-grey {
+    background-color: #F7F7F7;
+    color: #333;
+    border: 1px solid #E4E4E4;
+  }
+
   .v-line-title {
     font-weight: normal;
     margin: 0 8px 0 0;
@@ -913,4 +920,15 @@
   font-weight: bold;
   color: #333333;
   margin-bottom: 20px;
+}
+
+//only for presentation
+[ebp-report-widget] {
+  overflow-x: hidden;
+}
+
+.ebp-table-content, .ebp-table-header {
+  col {
+    width: 200px;
+  }
 }

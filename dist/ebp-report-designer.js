@@ -44,180 +44,129 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(1)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _core) {
-	    'use strict';
+	"use strict";
+	/**
+	 * Created by yao on 15/12/4.
+	 */
+	// import * as angular from 'angular';
+	var core_module_1 = __webpack_require__(1);
+	var ebpReportDesigner = angular.module('ebp.report.designer', [
+	    'ngResource',
+	    core_module_1.default.name,
+	    'ebp-ui',
+	    'angular-yao-utils'
+	]);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ebpReportDesigner;
 
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    var _core2 = _interopRequireDefault(_core);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    var ebpReportDesigner = angular.module('ebp.report.designer', ['ngResource', _core2.default.name, 'ebp-ui', 'angular-yao-utils']); /**
-	                                                                                                                                        * Created by yao on 15/12/4.
-	                                                                                                                                        */
-	    exports.default = ebpReportDesigner;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(3), __webpack_require__(4), __webpack_require__(5), __webpack_require__(6), __webpack_require__(7), __webpack_require__(8), __webpack_require__(30)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _config, _chartsProps, _tableProps, _datasourceProps, _datasource, _report, _designer, _widget) {
-	          'use strict';
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/3/1.
+	 */
+	// import * as angular from 'angular';
+	var config = __webpack_require__(2);
+	var charts_props_controller_1 = __webpack_require__(3);
+	var table_props_controller_1 = __webpack_require__(4);
+	var datasource_props_controller_1 = __webpack_require__(5);
+	var preview_controller_1 = __webpack_require__(6);
+	var datasource_service_1 = __webpack_require__(7);
+	var report_service_1 = __webpack_require__(9);
+	var widget_service_1 = __webpack_require__(10);
+	var designer_directive_1 = __webpack_require__(11);
+	var widget_directive_1 = __webpack_require__(33);
+	var list_directive_1 = __webpack_require__(36);
+	var coreModule = angular.module('ebp.report.designer.core', []);
+	coreModule.constant('defaultSettings', config.treeTableSettings)
+	    .factory('reportDatasourceService', datasource_service_1.ReportDatasourceFactory)
+	    .factory('reportService', report_service_1.ReportServiceFactory)
+	    .factory('reportWidgetService', widget_service_1.WidgetServiceFactory)
+	    .controller('ChartPropsController', charts_props_controller_1.default)
+	    .controller('TablePropsController', table_props_controller_1.default)
+	    .controller('DatasourcePropsController', datasource_props_controller_1.default)
+	    .controller('DatasourcePropsController', datasource_props_controller_1.default)
+	    .controller('ReportPreviewController', preview_controller_1.default)
+	    .directive('ebpReportWidget', widget_directive_1.default)
+	    .directive('ebpReportDesigner', designer_directive_1.default)
+	    .directive('ebpReportList', list_directive_1.default);
+	coreModule.run(function (yaoGuid, $window) {
+	    'ngInject';
+	    $window.guid = yaoGuid;
+	});
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = coreModule;
 
-	          Object.defineProperty(exports, "__esModule", {
-	                    value: true
-	          });
-
-	          var config = _interopRequireWildcard(_config);
-
-	          var _chartsProps2 = _interopRequireDefault(_chartsProps);
-
-	          var _tableProps2 = _interopRequireDefault(_tableProps);
-
-	          var _datasourceProps2 = _interopRequireDefault(_datasourceProps);
-
-	          var _designer2 = _interopRequireDefault(_designer);
-
-	          var _widget2 = _interopRequireDefault(_widget);
-
-	          function _interopRequireDefault(obj) {
-	                    return obj && obj.__esModule ? obj : {
-	                              default: obj
-	                    };
-	          }
-
-	          function _interopRequireWildcard(obj) {
-	                    if (obj && obj.__esModule) {
-	                              return obj;
-	                    } else {
-	                              var newObj = {};
-
-	                              if (obj != null) {
-	                                        for (var key in obj) {
-	                                                  if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-	                                        }
-	                              }
-
-	                              newObj.default = obj;
-	                              return newObj;
-	                    }
-	          }
-
-	          /**
-	           * Created by yaoshining on 16/3/1.
-	           */
-	          var coreModule = angular.module('ebp.report.designer.core', []);
-	          coreModule.constant('defaultSettings', config.treeTableSettings).factory('reportDatasourceService', _datasource.ReportDatasourceFactory).factory('reportService', _report.ReportServiceFactory).controller('ChartPropsController', _chartsProps2.default).controller('TablePropsController', _tableProps2.default).controller('DatasourcePropsController', _datasourceProps2.default).directive('ebpReportWidget', _widget2.default).directive('ebpReportDesigner', _designer2.default);
-
-	          coreModule.run(function (yaoGuid) {
-	                    'ngInject';
-
-	                    window.guid = yaoGuid;
-	          });
-
-	          exports.default = coreModule;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
+	/**
+	 * Created by yao on 15/12/9.
+	 */
+	// import * as angular from 'angular';
+	"use strict";
+	exports.directiveNames = {
+	    ebpTreeTable: 'ebpTreetable',
+	    ebpTreeTableCol: 'ebpTreetableCol',
+	    ebpTreeTableNode: 'ebpTreetableNode',
+	    ebpTreeTableCell: 'ebpTreetableCell',
+	    ebpTreeTableHeader: 'columnheader'
+	};
+	exports.treeTableSettings = {
+	    expandAll: false,
+	    colDefs: [],
+	    events: {
+	        edit: angular.noop,
+	        remove: angular.noop,
+	        add: angular.noop
+	    },
+	    dataSource: {
+	        read: null
+	    }
+	};
 
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    /**
-	     * Created by yao on 15/12/9.
-	     */
-	    var directiveNames = exports.directiveNames = {
-	        ebpTreeTable: 'ebpTreetable',
-	        ebpTreeTableCol: 'ebpTreetableCol',
-	        ebpTreeTableNode: 'ebpTreetableNode',
-	        ebpTreeTableCell: 'ebpTreetableCell',
-	        ebpTreeTableHeader: 'columnheader'
-	    };
-
-	    var treeTableSettings = exports.treeTableSettings = {
-	        expandAll: false,
-	        colDefs: [],
-	        events: {
-	            edit: angular.noop,
-	            remove: angular.noop,
-	            add: angular.noop
-	        },
-	        dataSource: {
-	            read: null
-	        }
-	    };
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var ChartPropsController = function ChartPropsController($scope) {
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/9/6.
+	 */
+	var ChartPropsController = (function () {
+	    function ChartPropsController($scope) {
 	        'ngInject';
-
-	        _classCallCheck(this, ChartPropsController);
-
 	        $scope.$chart = $scope.$designer.selectedItem;
 	        $scope.config = $scope.$chart.config;
-	    };
+	    }
+	    return ChartPropsController;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ChartPropsController;
 
-	    exports.default = ChartPropsController;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var TablePropsController = function TablePropsController($scope, reportDatasourceService) {
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/9/6.
+	 */
+	// import * as angular from 'angular';
+	var TablePropsController = (function () {
+	    function TablePropsController($scope, reportDatasourceService) {
 	        'ngInject';
-
-	        _classCallCheck(this, TablePropsController);
-
 	        $scope.$table = $scope.$designer.selectedItem;
 	        $scope.config = $scope.$table.config || {};
 	        var report = $scope.$designer.report;
-
 	        $scope.fields = [];
-
 	        if (report.dataSource) {
 	            reportDatasourceService.getFields(report.dataSource.seqId).then(function (fields) {
 	                $scope.fields = fields;
@@ -225,55 +174,45 @@
 	                    $scope.config.displayFields.forEach(function (f) {
 	                        var matched = _.find($scope.fields, { 'seqId': f.seqId });
 	                        if (matched) {
-	                            matched.$checked = true;
+	                            matched['$checked'] = true;
 	                        }
 	                    });
 	                }
 	            });
 	        }
-
 	        $scope.onFieldStatusChange = function (field) {
 	            if (field.$checked) {
 	                var _field = $.extend({}, field);
 	                delete _field.$checked;
 	                $scope.config.displayFields.push(_field);
-	            } else {
+	            }
+	            else {
 	                _.remove($scope.config.displayFields, function (f) {
 	                    return f.seqId === field.seqId;
 	                });
 	            }
 	        };
-	    };
+	    }
+	    return TablePropsController;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = TablePropsController;
 
-	    exports.default = TablePropsController;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var DatasourcePropsController = function DatasourcePropsController($scope, reportDatasourceService) {
+	/**
+	 * Created by yaoshining on 16/9/6.
+	 */
+	// import * as angular from 'angular';
+	"use strict";
+	var DatasourcePropsController = (function () {
+	    function DatasourcePropsController($scope, reportDatasourceService) {
 	        'ngInject';
-
-	        _classCallCheck(this, DatasourcePropsController);
-
 	        var report = $scope.report = $scope.$designer.report;
-
 	        $scope.fields = [];
-
 	        if (report.dataSource) {
 	            reportDatasourceService.getFields(report.dataSource.seqId).then(function (fields) {
 	                $scope.fields = fields;
@@ -281,19 +220,16 @@
 	                    report.filterFields.forEach(function (f) {
 	                        var matched = _.find($scope.fields, { 'seqId': f.seqId });
 	                        if (matched) {
-	                            matched.$checked = true;
+	                            matched['$checked'] = true;
 	                        }
 	                    });
 	                }
 	            });
 	        }
-
 	        $scope.dataSources = [];
-
 	        reportDatasourceService.getDataSources().then(function (dataSources) {
 	            $scope.dataSources = dataSources;
 	        });
-
 	        $scope.onDataSourceChange = function (dataSource) {
 	            report.filterFields = [];
 	            if (report.dataSource) {
@@ -302,1114 +238,647 @@
 	                });
 	            }
 	        };
-
 	        $scope.onFilterFieldStatusChange = function (field) {
 	            if (field.$checked) {
 	                var _field = $.extend({}, field);
 	                delete _field.$checked;
 	                report.filterFields.push(_field);
-	            } else {
+	            }
+	            else {
 	                _.remove(report.filterFields, function (f) {
 	                    return f.seqId === field.seqId;
 	                });
 	            }
 	        };
-	    };
+	    }
+	    return DatasourcePropsController;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = DatasourcePropsController;
 
-	    exports.default = DatasourcePropsController;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.ReportDatasourceFactory = ReportDatasourceFactory;
-	    /**
-	     * Created by yaoshining on 2016/11/1.
-	     */
-	    function ReportDatasourceFactory($http, $q) {
-
-	        function getFields(srcId) {
-	            var deferred = $q.defer();
-	            // const url = '/plt/dataSource/queryItem';
-	            var url = '/data/reports/datasource/1.json';
-	            $http.get(url, {
-	                params: {
-	                    dataSrcSeqId: srcId
-	                }
-	            }).then(function (res) {
-	                deferred.resolve(res.data);
-	            }, function (res) {
-	                deferred.reject(res);
+	"use strict";
+	/**
+	 * Created by yaoshining on 2016/11/30.
+	 */
+	var ReportPreviewController = (function () {
+	    function ReportPreviewController($scope, yaoFullscreen, report, $element, $resource) {
+	        'ngInject';
+	        this.yaoFullscreen = yaoFullscreen;
+	        this.$element = $element;
+	        $scope.$report = report;
+	        this.yaoFullscreen = yaoFullscreen;
+	        $scope.filterParams = {};
+	        $scope.refreshReport = function () {
+	            $scope.$broadcast('ebp.report.refresh', {
+	                filterParams: $scope.filterParams
 	            });
-	            return deferred.promise;
-	        }
-
-	        function getDataSources() {
-	            var deferred = $q.defer();
-	            // const url = '/plt/dataSource/getAllDataSrcSource';
-	            var url = '/data/reports/datasource/all.json';
-	            $http.get(url).then(function (res) {
-	                deferred.resolve(res.data);
-	            }, function (res) {
-	                deferred.reject(res);
+	        };
+	        var optionData = {};
+	        if (angular.isArray(report.filterFields)) {
+	            report.filterFields.filter(function (f) { return f.inputType === 'select'; }).forEach(function (field) {
+	                var url = field.inputOptions.url;
+	                optionData[field.seqId] = $resource(url, {}).query();
 	            });
-	            return deferred.promise;
 	        }
-
-	        return { getFields: getFields, getDataSources: getDataSources };
+	        $scope.getOptionData = function (id) { return optionData[id]; };
+	        $scope.getWidget = function (id) { return _.find(report.widgets, { id: id }); };
 	    }
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    ReportPreviewController.prototype.close = function () {
+	        this.yaoFullscreen.close();
+	    };
+	    ReportPreviewController.prototype.exportHTML = function () {
+	        angular.download(this.$element.find('.report-wrapper')[0]);
+	    };
+	    ReportPreviewController.prototype.print = function () {
+	        window.print();
+	    };
+	    return ReportPreviewController;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ReportPreviewController;
+
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    "use strict";
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.ReportServiceFactory = ReportServiceFactory;
-	    /**
-	     * Created by yaoshining on 2016/11/11.
-	     */
-	    function ReportServiceFactory($http, $q) {
-
-	        function save(report) {
-	            var deferred = $q.defer();
-	            var url = '/plt/reportTpl/addReportTpl';
-	            // const url = '/data/reports/datasource/all.json';
-	            $http.post(url, {
-	                reportName: report.title,
-	                reportTypeSeqId: 123,
-	                remark: "备注",
-	                reportDef: JSON.stringify(report)
-	            }).then(function (res) {
-	                report.seqId = res.data.rtData.seqId;
-	                deferred.resolve(res.data);
-	            }, function (res) {
-	                deferred.reject(res);
-	            });
-	            return deferred.promise;
-	        }
-
-	        return { save: save };
+	"use strict";
+	/**
+	 * Created by yaoshining on 2016/11/1.
+	 */
+	var API_1 = __webpack_require__(8);
+	function ReportDatasourceFactory($http, $q) {
+	    function getFields(srcId) {
+	        var deferred = $q.defer();
+	        var url = API_1.default.getFieldsByDataSource;
+	        $http.get(url, {
+	            params: {
+	                dataSrcSeqId: srcId
+	            }
+	        }).then(function (res) {
+	            deferred.resolve(res.data);
+	        }, function (res) {
+	            deferred.reject(res);
+	        });
+	        return deferred.promise;
 	    }
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    function getDataSources() {
+	        var deferred = $q.defer();
+	        var url = API_1.default.getAllDataSource;
+	        $http.get(url).then(function (res) {
+	            deferred.resolve(res.data);
+	        }, function (res) {
+	            deferred.reject(res);
+	        });
+	        return deferred.promise;
+	    }
+	    return { getFields: getFields, getDataSources: getDataSources };
+	}
+	exports.ReportDatasourceFactory = ReportDatasourceFactory;
+
 
 /***/ },
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(9), __webpack_require__(17), __webpack_require__(18), __webpack_require__(19)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _WidgetSelector, _SideMenu, _Report, _Bloc) {
-	    'use strict';
+	"use strict";
+	/**
+	 * Created by yaoshining on 2016/11/22.
+	 */
+	var API = {
+	    getTableData: '/pms/project/report/getReportData',
+	    getChartData: '/pms/project/report/getReportData',
+	    getAllDataSource: '/plt/dataSource/getAllDataSrcSource',
+	    getFieldsByDataSource: '/plt/dataSource/queryItem',
+	    saveReportDef: '/plt/reportTpl/addReportTpl',
+	    getProjectTypes: '/pms/resources/codeitemtree/getTree?t=1479793526596&bizType=PRJTYPE',
+	    getDepartments: '/plt/formtpl/getOrgList',
+	    getReportList: '/plt/reportTpl/typebyIdList',
+	    getReportGroupList: '/plt/reportType/typeList'
+	};
+	var testAPI = {
+	    getTableData: '/data/reports/table/1.json',
+	    getChartData: '/data/reports/salesVolumn.json',
+	    getAllDataSource: '/data/reports/datasource/all.json',
+	    getFieldsByDataSource: '/data/reports/datasource/1.json',
+	    saveReportDef: '/plt/reportTpl/addReportTpl',
+	    getProjectTypes: '/data/reports/project/types.json',
+	    getDepartments: '/data/reports/department/all.json',
+	    getReportList: '/data/reports/list.json',
+	    getReportGroupList: '/data/reports/group/list.json'
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = API;
 
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    var _WidgetSelector2 = _interopRequireDefault(_WidgetSelector);
-
-	    var _SideMenu2 = _interopRequireDefault(_SideMenu);
-
-	    var _Report2 = _interopRequireDefault(_Report);
-
-	    var _Bloc2 = _interopRequireDefault(_Bloc);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function ReportDesignerDirectiveFacroty() {
-
-	        function linkFunc(scope, elem, attrs, designer) {
-	            elem.addClass('report-designer');
-	            var reportElem = elem.find('.report-wrapper'),
-	                headerElem = reportElem.find('.report-header'),
-	                bodyElem = reportElem.find('.report-body');
-
-	            headerElem.on('click', function (e) {
-	                headerElem.toggleClass('active');
-	            });
-
-	            elem.on('contextmenu', function () {
-	                designer.widgetSelector.toggle();
-	                scope.$digest();
-	                return false;
-	            });
-	        }
-
-	        var directive = {
-	            restrict: 'AE',
-	            link: linkFunc,
-	            templateUrl: 'src/designer/templates/designer.tpl.html',
-	            controller: DesignerController,
-	            controllerAs: '$designer'
-	        };
-
-	        return directive;
-	    }
-
-	    var DesignerController = function () {
-	        function DesignerController($scope, $element, yaoFullscreen, reportService) {
-	            'ngInject';
-
-	            var _this = this;
-
-	            _classCallCheck(this, DesignerController);
-
-	            this.widgetSelector = _WidgetSelector2.default.$invoke(this, { $scope: $scope, $element: $element });
-	            this.sidemenu = $scope.sidemenu = _SideMenu2.default.$invoke(this, { $scope: $scope, $element: $element });
-	            this.report = _Report2.default.$invoke(this, { $scope: $scope, $element: $element });
-	            this.select = function (item) {
-	                if (_this.selectedItem) {
-	                    _this.selectedItem.element.removeClass('selected');
-	                }
-	                _this.selectedItem = item;
-	                item.element.addClass('selected');
-	                _this.sidemenu.refresh();
-	            };
-	            this.preview = function () {
-	                yaoFullscreen.open({
-	                    templateUrl: 'src/designer/templates/preview.tpl.html',
-	                    controller: PreviewController,
-	                    controllerAs: '$preview',
-	                    resolve: {
-	                        report: _this.report
-	                    }
-	                });
-	            };
-	            this.save = function () {
-	                reportService.save(_this.report);
-	            };
-	        }
-
-	        _createClass(DesignerController, [{
-	            key: 'addBloc',
-	            value: function addBloc() {
-	                var block = new _Bloc2.default(this.report);
-	                this.report.insertBloc(block);
-	            }
-	        }]);
-
-	        return DesignerController;
-	    }();
-
-	    var PreviewController = function PreviewController($scope, yaoFullscreen, report, $element) {
-	        'ngInject';
-
-	        _classCallCheck(this, PreviewController);
-
-	        $scope.$report = report;
-	        this.close = function () {
-	            yaoFullscreen.close();
-	        };
-
-	        this.exportHTML = function () {
-	            return angular.download($element.find('.report-wrapper')[0]);
-	        };
-
-	        this.print = function () {
-	            // const reportWrapper = $element.find('.report-wrapper');
-	            // reportWrapper.addClass('print-a4');
-	            // $(window).resize();
-	            // setTimeout(() => print(), 100);
-	            print();
-	        };
-
-	        // if(matchMedia) {
-	        //     matchMedia('print').addListener(mql => {
-	        //         const reportWrapper = $element.find('.report-wrapper');
-	        //         if(!mql.matches) {
-	        //             reportWrapper.removeClass('print-a4');
-	        //         }
-	        //     });
-	        // }
-	    };
-
-	    exports.default = ReportDesignerDirectiveFacroty;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(10)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Widgets) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    var widgets = _interopRequireWildcard(_Widgets);
-
-	    function _interopRequireWildcard(obj) {
-	        if (obj && obj.__esModule) {
-	            return obj;
-	        } else {
-	            var newObj = {};
-
-	            if (obj != null) {
-	                for (var key in obj) {
-	                    if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-	                }
-	            }
-
-	            newObj.default = obj;
-	            return newObj;
-	        }
+	"use strict";
+	/**
+	 * Created by yaoshining on 2016/11/11.
+	 */
+	var API_1 = __webpack_require__(8);
+	function ReportServiceFactory($http, $q) {
+	    function save(report) {
+	        var deferred = $q.defer();
+	        var url = API_1.default.saveReportDef;
+	        $http.post(url, {
+	            reportName: report.title,
+	            reportTypeSeqId: 1,
+	            remark: "备注",
+	            reportDef: JSON.stringify(report)
+	        }).then(function (res) {
+	            report.seqId = res.data.rtData.seqId;
+	            deferred.resolve(res.data);
+	        }, function (res) {
+	            deferred.reject(res);
+	        });
+	        return deferred.promise;
 	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
+	    function getReportList(groupId) {
+	        var deferred = $q.defer();
+	        var url = API_1.default.getReportList;
+	        $http.get(url, {
+	            params: {
+	                typeSeqId: groupId
 	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function WidgetSelector() {
-
-	        var self = this;
-
-	        var WidgetSelector = function () {
-	            function WidgetSelector() {
-	                var _this = this;
-
-	                _classCallCheck(this, WidgetSelector);
-
-	                this.enable = false;
-	                this.widgets = widgets;
-	                this.selectedWidget = widgets.BarChart;
-	                Object.defineProperties(self, {
-	                    cursor: {
-	                        get: function get() {
-	                            if (_this.enable) {
-	                                return 'cursor-' + _this.selectedWidget.name;
-	                            }
-	                            return '';
-	                        }
-	                    }
-	                });
-	            }
-
-	            _createClass(WidgetSelector, [{
-	                key: 'toggle',
-	                value: function toggle() {
-	                    this.enable = !this.enable;
-	                }
-	            }, {
-	                key: 'select',
-	                value: function select(widget) {
-	                    this.selectedWidget = widget;
-	                }
-	            }]);
-
-	            return WidgetSelector;
-	        }();
-
-	        return new WidgetSelector();
+	        }).then(function (res) {
+	            deferred.resolve(res.data);
+	        }, function (res) {
+	            deferred.reject(res);
+	        });
+	        return deferred.promise;
 	    }
+	    function getGroupList() {
+	        var deferred = $q.defer();
+	        var url = API_1.default.getReportGroupList;
+	        $http.get(url).then(function (res) {
+	            deferred.resolve(res.data);
+	        }, function (res) {
+	            deferred.reject(res);
+	        });
+	        return deferred.promise;
+	    }
+	    return { save: save, getReportList: getReportList, getGroupList: getGroupList };
+	}
+	exports.ReportServiceFactory = ReportServiceFactory;
 
-	    exports.default = WidgetSelector;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(11), __webpack_require__(14), __webpack_require__(15), __webpack_require__(16)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _BarChart, _LineChart, _PieChart, _Table) {
-	  'use strict';
+	"use strict";
+	var API_1 = __webpack_require__(8);
+	function WidgetServiceFactory($http, $q) {
+	    function getTableData(params) {
+	        var deferred = $q.defer();
+	        var url = API_1.default.getTableData;
+	        $http.get(url, { params: params }).then(function (res) {
+	            deferred.resolve(res.data);
+	        }, function (res) {
+	            deferred.reject(res);
+	        });
+	        return deferred.promise;
+	    }
+	    function getChartData(params) {
+	        var deferred = $q.defer();
+	        var url = API_1.default.getChartData;
+	        $http.get(url, { params: params }).then(function (res) {
+	            deferred.resolve(res.data);
+	        }, function (res) {
+	            deferred.reject(res);
+	        });
+	        return deferred.promise;
+	    }
+	    return { getTableData: getTableData, getChartData: getChartData };
+	}
+	exports.WidgetServiceFactory = WidgetServiceFactory;
 
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
-	  Object.keys(_BarChart).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _BarChart[key];
-	      }
-	    });
-	  });
-	  Object.keys(_LineChart).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _LineChart[key];
-	      }
-	    });
-	  });
-	  Object.keys(_PieChart).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _PieChart[key];
-	      }
-	    });
-	  });
-	  Object.keys(_Table).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _Table[key];
-	      }
-	    });
-	  });
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(12)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Chart2) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.BarChart = undefined;
-
-	    var _Chart3 = _interopRequireDefault(_Chart2);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/8/15.
+	 */
+	var WidgetSelector_1 = __webpack_require__(12);
+	var SideMenu_1 = __webpack_require__(20);
+	var Report_1 = __webpack_require__(21);
+	var Bloc_1 = __webpack_require__(22);
+	function ReportDesignerDirectiveFactory() {
+	    function linkFunc(scope, elem, attrs, designer) {
+	        elem.addClass('report-designer');
+	        var reportElem = elem.find('.report-wrapper'), headerElem = reportElem.find('.report-header'), bodyElem = reportElem.find('.report-body');
+	        headerElem.on('click', function (e) {
+	            headerElem.toggleClass('active');
 	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	        elem.on('contextmenu', function () {
+	            designer.widgetSelector.toggle();
+	            scope.$digest();
+	            return false;
+	        });
 	    }
-
-	    var BarChart = exports.BarChart = function (_Chart) {
-	        _inherits(BarChart, _Chart);
-
-	        _createClass(BarChart, null, [{
-	            key: 'name',
-	            get: function get() {
-	                return 'barchart';
+	    var directive = {
+	        restrict: 'AE',
+	        link: linkFunc,
+	        templateUrl: 'src/designer/templates/designer.tpl.html',
+	        controller: DesignerController,
+	        controllerAs: '$designer'
+	    };
+	    return directive;
+	}
+	var DesignerController = (function () {
+	    function DesignerController($scope, $element, yaoFullscreen, reportService) {
+	        'ngInject';
+	        var _this = this;
+	        this.widgetSelector = WidgetSelector_1.default.$invoke(this, { $scope: $scope, $element: $element });
+	        this.sidemenu = $scope.sidemenu = SideMenu_1.default.$invoke(this, { $scope: $scope, $element: $element });
+	        this.report = Report_1.default.$invoke(this, { $scope: $scope, $element: $element });
+	        this.select = function (item) {
+	            if (_this.selectedItem) {
+	                _this.selectedItem.element.removeClass('selected');
 	            }
-	        }]);
+	            _this.selectedItem = item;
+	            item.element.addClass('selected');
+	            _this.sidemenu.refresh();
+	        };
+	        this.preview = function () {
+	            yaoFullscreen.open({
+	                templateUrl: 'src/designer/templates/preview.tpl.html',
+	                controller: 'ReportPreviewController',
+	                controllerAs: '$preview',
+	                resolve: {
+	                    report: _this.report
+	                }
+	            });
+	        };
+	        this.save = function () {
+	            reportService.save(_this.report);
+	        };
+	    }
+	    DesignerController.prototype.addBloc = function () {
+	        var block = new Bloc_1.default(this.report);
+	        this.report.insertBloc(block);
+	    };
+	    return DesignerController;
+	}());
+	var PreviewController = (function () {
+	    function PreviewController($scope, yaoFullscreen, report, $element) {
+	        'ngInject';
+	        this.yaoFullscreen = yaoFullscreen;
+	        this.$element = $element;
+	        $scope.$report = report;
+	    }
+	    PreviewController.prototype.close = function () {
+	        this.yaoFullscreen.close();
+	    };
+	    ;
+	    PreviewController.prototype.print = function () {
+	        print();
+	    };
+	    ;
+	    PreviewController.prototype.exportHTML = function () {
+	        angular.download(this.$element.find('.report-wrapper')[0]);
+	    };
+	    return PreviewController;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ReportDesignerDirectiveFactory;
 
-	        function BarChart() {
-	            _classCallCheck(this, BarChart);
-
-	            var _this = _possibleConstructorReturn(this, (BarChart.__proto__ || Object.getPrototypeOf(BarChart)).call(this));
-
-	            _this.type = _Chart2.ChartType.BAR;
-	            _this.name = BarChart.name;
-	            _this.title = '柱状图';
-	            return _this;
-	        }
-
-	        return BarChart;
-	    }(_Chart3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(13)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Widget2) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.ChartType = undefined;
-
-	    var _Widget3 = _interopRequireDefault(_Widget2);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _get = function get(object, property, receiver) {
-	        if (object === null) object = Function.prototype;
-	        var desc = Object.getOwnPropertyDescriptor(object, property);
-
-	        if (desc === undefined) {
-	            var parent = Object.getPrototypeOf(object);
-
-	            if (parent === null) {
-	                return undefined;
-	            } else {
-	                return get(parent, property, receiver);
-	            }
-	        } else if ("value" in desc) {
-	            return desc.value;
-	        } else {
-	            var getter = desc.get;
-
-	            if (getter === undefined) {
-	                return undefined;
-	            }
-
-	            return getter.call(receiver);
-	        }
-	    };
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
-	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
-
-	    var Chart = function (_Widget) {
-	        _inherits(Chart, _Widget);
-
-	        function Chart() {
-	            _classCallCheck(this, Chart);
-
-	            var _this = _possibleConstructorReturn(this, (Chart.__proto__ || Object.getPrototypeOf(Chart)).call(this));
-
-	            _this.category = 'chart';
-	            _this.type = null;
-	            _this.title = '图表';
-	            _this.config = {
-	                title: '未命名图表',
-	                dataSource: {
-	                    url: '',
-	                    params: []
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/8/16.
+	 */
+	var widgets = __webpack_require__(13);
+	function WidgetSelector() {
+	    var self = this;
+	    var WidgetSelector = (function () {
+	        function WidgetSelector() {
+	            var _this = this;
+	            this.enable = false;
+	            this.widgets = widgets;
+	            this.selectedWidget = widgets['BarChart'];
+	            this.enable = false;
+	            this.widgets = widgets;
+	            this.selectedWidget = widgets['BarChart'];
+	            Object.defineProperties(self, {
+	                cursor: {
+	                    get: function () {
+	                        if (_this.enable) {
+	                            return 'cursor-' + _this.selectedWidget.name;
+	                        }
+	                        return '';
+	                    }
 	                }
-	            };
-	            return _this;
+	            });
 	        }
+	        WidgetSelector.prototype.toggle = function () {
+	            this.enable = !this.enable;
+	        };
+	        WidgetSelector.prototype.select = function (widget) {
+	            this.selectedWidget = widget;
+	        };
+	        return WidgetSelector;
+	    }());
+	    return new WidgetSelector();
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = WidgetSelector;
 
-	        _createClass(Chart, [{
-	            key: 'render',
-	            value: function render() {
-	                _get(Chart.prototype.__proto__ || Object.getPrototypeOf(Chart.prototype), 'render', this).call(this);
-	                this.element.on('click', clickHandler.bind(this));
-	                return this.element;
-	            }
-	        }]);
-
-	        return Chart;
-	    }(_Widget3.default);
-
-	    function clickHandler() {
-	        var sidemenu = this.$designer.sidemenu;
-	        sidemenu.changeTab(2, 'src/designer/templates/charts-props.tpl.html');
-	        this.$designer.select(this);
-	    }
-
-	    var ChartType = exports.ChartType = {
-	        BAR: 'bar',
-	        LINE: 'line',
-	        PIE: 'pie'
-	    };
-
-	    exports.default = Chart;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	/**
+	 * Created by yaoshining on 16/8/25.
+	 */
+	__export(__webpack_require__(14));
+	__export(__webpack_require__(17));
+	__export(__webpack_require__(18));
+	__export(__webpack_require__(19));
 
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    var Widget = function () {
-	        function Widget() {
-	            _classCallCheck(this, Widget);
-
-	            this.id = guid();
-	            this.category = null;
-	            this.name = null;
-	            this.title = '组件';
-	            var element = $('<div>').addClass('report-widget');
-	            var _report = null;
-	            Object.defineProperties(this, {
-	                element: {
-	                    get: function get() {
-	                        return element;
-	                    }
-	                },
-	                report: {
-	                    set: function set(report) {
-	                        return _report = report;
-	                    },
-	                    get: function get() {
-	                        return _report;
-	                    }
-	                }
-	            });
-	        }
-
-	        _createClass(Widget, [{
-	            key: 'render',
-	            value: function render() {
-	                var _this = this;
-
-	                this.element.attr('title', this.title);
-	                this.element.append($('<div>').addClass('widget-' + this.name));
-	                var removeButton = $('<div>').addClass('widget-remove-button').on('click', function () {
-	                    alert(2);
-	                }).hover(function () {
-	                    _this.element.addClass('warning');
-	                }, function () {
-	                    _this.element.removeClass('warning');
-	                });
-	                this.element.append(removeButton);
-	                return this.element;
-	            }
-	        }]);
-
-	        return Widget;
-	    }();
-
-	    exports.default = Widget;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(12)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Chart2) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/25.
+	 */
+	var Chart_1 = __webpack_require__(15);
+	var BarChart = (function (_super) {
+	    __extends(BarChart, _super);
+	    function BarChart() {
+	        _super.call(this);
+	        this.type = Chart_1.ChartType.BAR;
+	        this.name = BarChart.name;
+	        this.title = '柱状图';
+	    }
+	    Object.defineProperty(BarChart, "name", {
+	        get: function () {
+	            return 'barchart';
+	        },
+	        enumerable: true,
+	        configurable: true
 	    });
-	    exports.LineChart = undefined;
+	    return BarChart;
+	}(Chart_1.default));
+	exports.BarChart = BarChart;
 
-	    var _Chart3 = _interopRequireDefault(_Chart2);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
-	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
-
-	    var LineChart = exports.LineChart = function (_Chart) {
-	        _inherits(LineChart, _Chart);
-
-	        _createClass(LineChart, null, [{
-	            key: 'name',
-	            get: function get() {
-	                return 'linechart';
-	            }
-	        }]);
-
-	        function LineChart() {
-	            _classCallCheck(this, LineChart);
-
-	            var _this = _possibleConstructorReturn(this, (LineChart.__proto__ || Object.getPrototypeOf(LineChart)).call(this));
-
-	            _this.type = _Chart2.ChartType.LINE;
-	            _this.name = LineChart.name;
-	            _this.title = '线图';
-	            return _this;
-	        }
-
-	        return LineChart;
-	    }(_Chart3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(12)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Chart2) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.PieChart = undefined;
-
-	    var _Chart3 = _interopRequireDefault(_Chart2);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/25.
+	 */
+	var Widget_1 = __webpack_require__(16);
+	var Chart = (function (_super) {
+	    __extends(Chart, _super);
+	    function Chart() {
+	        _super.call(this);
+	        this.category = 'chart';
+	        this.type = null;
+	        this.title = '图表';
+	        this.config = {
+	            title: '未命名图表',
+	            dataSource: {
+	                url: '',
+	                params: []
+	            }
 	        };
 	    }
+	    Chart.prototype.render = function () {
+	        _super.prototype.render.call(this);
+	        this.element.on('click', clickHandler.bind(this));
+	        return this.element;
+	    };
+	    return Chart;
+	}(Widget_1.default));
+	function clickHandler() {
+	    var sidemenu = this.$designer.sidemenu;
+	    sidemenu.changeTab(2, 'src/designer/templates/charts-props.tpl.html');
+	    this.$designer.select(this);
+	}
+	exports.ChartType = {
+	    BAR: 'bar',
+	    LINE: 'line',
+	    PIE: 'pie'
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Chart;
 
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
-	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
-
-	    var PieChart = exports.PieChart = function (_Chart) {
-	        _inherits(PieChart, _Chart);
-
-	        _createClass(PieChart, null, [{
-	            key: 'name',
-	            get: function get() {
-	                return 'piechart';
-	            }
-	        }]);
-
-	        function PieChart() {
-	            _classCallCheck(this, PieChart);
-
-	            var _this = _possibleConstructorReturn(this, (PieChart.__proto__ || Object.getPrototypeOf(PieChart)).call(this));
-
-	            _this.type = _Chart2.ChartType.PIE;
-	            _this.name = PieChart.name;
-	            _this.title = '饼图';
-	            return _this;
-	        }
-
-	        return PieChart;
-	    }(_Chart3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(13)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Widget2) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.Table = undefined;
-
-	    var _Widget3 = _interopRequireDefault(_Widget2);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _get = function get(object, property, receiver) {
-	        if (object === null) object = Function.prototype;
-	        var desc = Object.getOwnPropertyDescriptor(object, property);
-
-	        if (desc === undefined) {
-	            var parent = Object.getPrototypeOf(object);
-
-	            if (parent === null) {
-	                return undefined;
-	            } else {
-	                return get(parent, property, receiver);
-	            }
-	        } else if ("value" in desc) {
-	            return desc.value;
-	        } else {
-	            var getter = desc.get;
-
-	            if (getter === undefined) {
-	                return undefined;
-	            }
-
-	            return getter.call(receiver);
-	        }
-	    };
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/8/24.
+	 */
+	var Widget = (function () {
+	    function Widget() {
+	        this.id = guid();
+	        this.category = null;
+	        this.name = null;
+	        this.title = '组件';
+	        var element = $('<div>').addClass('report-widget');
+	        var _report = null;
+	        Object.defineProperties(this, {
+	            element: {
+	                get: function () { return element; }
+	            },
+	            report: {
+	                set: function (report) { return _report = report; },
+	                get: function () { return _report; }
 	            }
 	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	    }
+	    Widget.prototype.render = function () {
+	        var _this = this;
+	        this.element.attr('title', this.title);
+	        this.element.append($('<div>').addClass("widget-" + this.name));
+	        var removeButton = $('<div>').addClass('widget-remove-button').on('click', function () {
+	            alert(2);
+	        }).hover(function () {
+	            _this.element.addClass('warning');
+	        }, function () {
+	            _this.element.removeClass('warning');
+	        });
+	        this.element.append(removeButton);
+	        return this.element;
+	    };
+	    return Widget;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Widget;
 
-	    var Table = exports.Table = function (_Widget) {
-	        _inherits(Table, _Widget);
-
-	        _createClass(Table, null, [{
-	            key: 'name',
-	            get: function get() {
-	                return 'table';
-	            }
-	        }]);
-
-	        function Table() {
-	            _classCallCheck(this, Table);
-
-	            var _this = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this));
-
-	            _this.category = 'table';
-	            _this.name = Table.name;
-	            _this.title = '表格';
-	            _this.config = {
-	                title: '未命名表格',
-	                dataSource: {
-	                    url: '',
-	                    params: []
-	                },
-	                displayFields: []
-	            };
-	            return _this;
-	        }
-
-	        _createClass(Table, [{
-	            key: 'render',
-	            value: function render() {
-	                _get(Table.prototype.__proto__ || Object.getPrototypeOf(Table.prototype), 'render', this).call(this);
-	                this.element.on('click', clickHandler.bind(this));
-	                return this.element;
-	            }
-	        }]);
-
-	        return Table;
-	    }(_Widget3.default);
-
-	    function clickHandler() {
-	        var sidemenu = this.$designer.sidemenu;
-	        sidemenu.changeTab(2, 'src/designer/templates/table-props.tpl.html');
-	        this.$designer.select(this);
-	    }
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-	        return typeof obj;
-	    } : function (obj) {
-	        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-	    };
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/25.
+	 */
+	var Chart_1 = __webpack_require__(15);
+	var LineChart = (function (_super) {
+	    __extends(LineChart, _super);
+	    function LineChart() {
+	        _super.call(this);
+	        this.type = Chart_1.ChartType.LINE;
+	        this.name = LineChart.name;
+	        this.title = '线图';
 	    }
+	    Object.defineProperty(LineChart, "name", {
+	        get: function () {
+	            return 'linechart';
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return LineChart;
+	}(Chart_1.default));
+	exports.LineChart = LineChart;
 
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
 
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/25.
+	 */
+	var Chart_1 = __webpack_require__(15);
+	var PieChart = (function (_super) {
+	    __extends(PieChart, _super);
+	    function PieChart() {
+	        _super.call(this);
+	        this.type = Chart_1.ChartType.PIE;
+	        this.name = PieChart.name;
+	        this.title = '饼图';
+	    }
+	    Object.defineProperty(PieChart, "name", {
+	        get: function () {
+	            return 'piechart';
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    return PieChart;
+	}(Chart_1.default));
+	exports.PieChart = PieChart;
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/25.
+	 */
+	var Widget_1 = __webpack_require__(16);
+	var Table = (function (_super) {
+	    __extends(Table, _super);
+	    function Table() {
+	        _super.call(this);
+	        this.category = 'table';
+	        this.name = Table.name;
+	        this.title = '表格';
+	        this.config = {
+	            title: '未命名表格',
+	            dataSource: {
+	                url: '',
+	                params: []
+	            },
+	            displayFields: []
 	        };
-	    }();
+	    }
+	    Object.defineProperty(Table, "name", {
+	        get: function () {
+	            return 'table';
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    Table.prototype.render = function () {
+	        _super.prototype.render.call(this);
+	        this.element.on('click', clickHandler.bind(this));
+	        return this.element;
+	    };
+	    return Table;
+	}(Widget_1.default));
+	exports.Table = Table;
+	function clickHandler() {
+	    var sidemenu = this.$designer.sidemenu;
+	    sidemenu.changeTab(2, 'src/designer/templates/table-props.tpl.html');
+	    this.$designer.select(this);
+	}
 
-	    /**
-	     * Created by yaoshining on 16/8/10.
-	     */
 
-	    function SideMenu($element, $scope, $timeout) {
-	        'ngInject';
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
 
-	        var opened = false,
-	            tabs = [{
+	/**
+	 * Created by yaoshining on 16/8/10.
+	 */
+	"use strict";
+	function SideMenu($element, $scope, $timeout) {
+	    'ngInject';
+	    var opened = false, tabs = [{
 	            id: 1,
 	            title: '报表',
 	            view: {
@@ -1423,1569 +892,894 @@
 	            }
 	        }, {
 	            id: 3,
+	            view: {},
 	            title: '组件'
 	        }];
-	        var activeTab = tabs[0];
-
-	        var Panel = function () {
-	            function Panel() {
-	                _classCallCheck(this, Panel);
-
-	                $element.find('.designer-menu').on('click', function (event) {
-	                    return event.stopPropagation();
-	                });
-	            }
-
-	            _createClass(Panel, [{
-	                key: 'toggle',
-	                value: function toggle(event) {
-	                    event.stopPropagation();
-	                    $element.find('.menu-button').toggleClass('opened');
-	                    opened = !opened;
-	                }
-	            }, {
-	                key: 'changeTab',
-	                value: function changeTab(tab, templateUrl) {
-	                    if ((typeof tab === 'undefined' ? 'undefined' : _typeof(tab)) == 'object') {
-	                        activeTab = tab;
-	                    }
-	                    if (typeof tab == 'number') {
-	                        activeTab = tabs[tab];
-	                    }
-	                    if (templateUrl) {
-	                        activeTab.view = { templateUrl: templateUrl };
-	                    }
-	                    if (!$scope.$$phase) {
-	                        $scope.$apply();
-	                    }
-	                }
-	            }, {
-	                key: 'refresh',
-	                value: function refresh() {
-	                    var tmp = activeTab.view;
-	                    activeTab.view = {
-	                        templateUrl: ''
-	                    };
-	                    if (!$scope.$$phase) {
-	                        $scope.$apply();
-	                    }
-	                    $timeout(function () {
-	                        activeTab.view = tmp;
-	                    }, 0);
-	                }
-	            }, {
-	                key: 'opened',
-	                get: function get() {
-	                    return opened;
-	                }
-	            }, {
-	                key: 'tabs',
-	                get: function get() {
-	                    return tabs;
-	                }
-	            }, {
-	                key: 'activeTab',
-	                get: function get() {
-	                    return activeTab;
-	                }
-	            }]);
-
-	            return Panel;
-	        }();
-
-	        return new Panel();
-	    }
-
-	    exports.default = SideMenu;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
+	    var activeTab = tabs[0];
+	    var Panel = (function () {
+	        function Panel() {
+	            $element.find('.designer-menu').on('click', function (event) { return event.stopPropagation(); });
 	        }
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    /**
-	     * Created by yaoshining on 16/8/10.
-	     */
-	    function Report($scope, $element) {
-	        'ngInject';
-
-	        var Report = function () {
-	            function Report() {
-	                var _this = this;
-
-	                _classCallCheck(this, Report);
-
-	                $.extend(this, {
-	                    title: '未命名报表',
-	                    subtitle: '关于此报表的详细说明',
-	                    blocs: [],
-	                    widgets: [],
-	                    getWidget: function getWidget(id) {
-	                        return _.find(_this.widgets, { id: id });
-	                    }
-	                });
-	                Object.defineProperties(this, {
-	                    $scope: {
-	                        get: function get() {
-	                            return $scope;
-	                        }
-	                    }
-	                });
-	            }
-
-	            _createClass(Report, [{
-	                key: 'insertBloc',
-	                value: function insertBloc(bloc) {
-	                    $element.find('.report-body').append(bloc.render());
-	                    this.blocs.push(bloc);
-	                }
-	            }, {
-	                key: 'insertBlocAfter',
-	                value: function insertBlocAfter(pre, bloc) {
-	                    var i = $.inArray(pre, this.blocs) + 1;
-	                    if (i === 0) {
-	                        this.insertBloc(bloc);
-	                    } else {
-	                        bloc.render().insertAfter(pre.element);
-	                        this.blocs.splice(i, 0, bloc);
-	                    }
-	                }
-	            }, {
-	                key: 'removeBloc',
-	                value: function removeBloc(bloc) {
-	                    var _this2 = this;
-
-	                    var i = -1;
-	                    if ((i = $.inArray(bloc, this.blocs)) > -1) {
-	                        $scope.$apply(function () {
-	                            _this2.blocs.splice(i, 1);
-	                        });
-	                    }
-	                }
-	            }]);
-
-	            return Report;
-	        }();
-
-	        var report = new Report(),
-	            self = this;
-	        Object.defineProperties(report, {
-	            $designer: {
-	                get: function get() {
-	                    return self;
-	                }
-	            }
+	        Object.defineProperty(Panel.prototype, "opened", {
+	            get: function () {
+	                return opened;
+	            },
+	            enumerable: true,
+	            configurable: true
 	        });
-	        return report;
-	    }
-
-	    exports.default = Report;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(20)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Layouts) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    var Layouts = _interopRequireWildcard(_Layouts);
-
-	    function _interopRequireWildcard(obj) {
-	        if (obj && obj.__esModule) {
-	            return obj;
-	        } else {
-	            var newObj = {};
-
-	            if (obj != null) {
-	                for (var key in obj) {
-	                    if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-	                }
-	            }
-
-	            newObj.default = obj;
-	            return newObj;
-	        }
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    var Bloc = function () {
-	        function Bloc(report) {
-	            var _this = this;
-
-	            _classCallCheck(this, Bloc);
-
-	            var _layout = null;
-	            Object.defineProperties(this, {
-	                report: {
-	                    get: function get() {
-	                        return report;
-	                    }
-	                },
-	                layout: {
-	                    get: function get() {
-	                        return _layout;
-	                    },
-	                    set: function set(layout) {
-	                        if (_layout) {
-	                            _this.removeLayout();
-	                        }
-	                        _layout = layout;
-	                        var addBloc = $('<div>').addClass('add-bloc-btn').text('+').on('click', function () {
-	                            var bloc = new Bloc(_this.report);
-	                            _this.report.insertBlocAfter(_this, bloc);
-	                        }),
-	                            el = layout.render();
-	                        el.append(addBloc);
-	                        _this.element.append(el);
-	                    }
-	                }
-	            });
-	        }
-
-	        _createClass(Bloc, [{
-	            key: 'render',
-	            value: function render() {
-	                this.element = renderEmptyElement.bind(this).call();
-	                return this.element;
-	            }
-	        }, {
-	            key: 'destroy',
-	            value: function destroy() {
-	                this.element.remove();
-	            }
-	        }, {
-	            key: 'removeLayout',
-	            value: function removeLayout() {
-	                this.layout.container.remove();
-	            }
-	        }, {
-	            key: 'toJSON',
-	            value: function toJSON() {
-	                var obj = $.extend({}, this);
-	                delete obj.element;
-	                delete obj.selectPane;
-	                obj.layout = this.layout;
-	                return obj;
-	            }
-	        }]);
-
-	        return Bloc;
-	    }();
-
-	    function renderEmptyElement() {
-	        var _this2 = this;
-
-	        var root = $('<div>').addClass('report-bloc-wrapper');
-	        this.selectPane = new SelectPane(this);
-	        root.append(this.selectPane.render());
-	        setTimeout(function () {
-	            _this2.selectPane.open();
-	        }, 0);
-	        $compile(root)(this.report.$scope);
-	        return root;
-	    }
-
-	    var SelectPane = function () {
-	        function SelectPane(bloc) {
-	            _classCallCheck(this, SelectPane);
-
-	            Object.defineProperties(this, {
-	                bloc: {
-	                    get: function get() {
-	                        return bloc;
-	                    }
-	                },
-	                report: {
-	                    get: function get() {
-	                        return bloc.report;
-	                    }
-	                }
-	            });
-	        }
-
-	        _createClass(SelectPane, [{
-	            key: 'render',
-	            value: function render() {
-	                this.element = renderSelectPane.bind(this).call();
-	                return this.element;
-	            }
-	        }, {
-	            key: 'open',
-	            value: function open() {
-	                var _this3 = this;
-
-	                this.element.addClass('opened');
-	                $(document).one('click', function (event) {
-	                    var parents = $(event.target).parents().addBack();
-	                    if (parents.is('.select-pane')) {
-	                        return false;
-	                    }
-	                    if (parents.is('.report-designer')) {
-	                        _this3.close();
-	                    }
-	                });
-	            }
-	        }, {
-	            key: 'close',
-	            value: function close() {
-	                var _this4 = this;
-
-	                this.element.removeClass('opened');
-	                if (!this.bloc.layout) {
-	                    setTimeout(function () {
-	                        _this4.bloc.destroy();
-	                        _this4.report.removeBloc(_this4.bloc);
-	                    }, 500);
-	                }
-	            }
-	        }]);
-
-	        return SelectPane;
-	    }();
-
-	    function renderSelectPane() {
-	        var _this5 = this;
-
-	        var pane = $('<div>').addClass('select-pane assistant');
-
-	        var leftButton = $('\n            <span class="pull-left">\n                <i class="fa fa-angle-left"></i>\n            </span>\n        '),
-	            rightButton = $('\n            <span class="pull-right">\n                <i class="fa fa-angle-right"></i>\n            </span>\n        '),
-	            title = $('<div>').addClass('pane-title').append(leftButton).append(rightButton);
-
-	        var body = $('<div>').addClass('pane-body');
-	        var list = $('<ul>').addClass('pane-h-list');
-	        angular.forEach(Layouts, function (Layout) {
-	            var thumbnail = Layout.thumbnail;
-	            list.append($('<li>').html(thumbnail));
-	            thumbnail.on('click', function () {
-	                _this5.bloc.layout = new Layout(_this5.bloc);
-	            });
-	        });
-	        body.append(list);
-	        pane.append(title).append(body);
-	        pane.on('click', function (event) {
+	        Panel.prototype.toggle = function (event) {
 	            event.stopPropagation();
+	            $element.find('.menu-button').toggleClass('opened');
+	            opened = !opened;
+	        };
+	        Object.defineProperty(Panel.prototype, "tabs", {
+	            get: function () {
+	                return tabs;
+	            },
+	            enumerable: true,
+	            configurable: true
 	        });
-	        leftButton.on('click', function () {
-	            var currentPosition = parseInt(list.css('margin-left')),
-	                step = 300,
-	                endPoint = 0;
-	            currentPosition += step;
-	            if (currentPosition > endPoint) {
-	                currentPosition = endPoint;
+	        Object.defineProperty(Panel.prototype, "activeTab", {
+	            get: function () {
+	                return activeTab;
+	            },
+	            enumerable: true,
+	            configurable: true
+	        });
+	        Panel.prototype.changeTab = function (tab, templateUrl) {
+	            if (typeof tab == 'object') {
+	                activeTab = tab;
 	            }
-	            list.stop(true, true).animate({
-	                'margin-left': currentPosition
-	            });
-	        });
-	        rightButton.on('click', function () {
-	            var currentPosition = parseInt(list.css('margin-left')),
-	                step = 300,
-	                endPoint = body.width() - list.width() + 20;
-	            currentPosition -= step;
-	            if (currentPosition < endPoint) {
-	                currentPosition = endPoint;
+	            if (typeof tab == 'number') {
+	                activeTab = tabs[tab];
 	            }
-	            list.stop(true, true).animate({
-	                'margin-left': currentPosition
-	            });
-	        });
-	        $compile(pane)(this.report.$scope);
-	        return pane;
-	    }
+	            if (templateUrl) {
+	                activeTab.view = { templateUrl: templateUrl };
+	            }
+	            if (!$scope.$$phase) {
+	                $scope.$apply();
+	            }
+	        };
+	        Panel.prototype.refresh = function () {
+	            var tmp = activeTab.view;
+	            activeTab.view = {
+	                templateUrl: ''
+	            };
+	            if (!$scope.$$phase) {
+	                $scope.$apply();
+	            }
+	            $timeout(function () {
+	                activeTab.view = tmp;
+	            }, 0);
+	        };
+	        return Panel;
+	    }());
+	    return new Panel();
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = SideMenu;
 
-	    exports.default = Bloc;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(21), __webpack_require__(25), __webpack_require__(26), __webpack_require__(27), __webpack_require__(28), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _OneColumn, _TwoColumn, _ThreeColumn, _FourColumn, _TwoToOne, _OneToTwo) {
-	  'use strict';
-
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
-	  Object.keys(_OneColumn).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _OneColumn[key];
-	      }
-	    });
-	  });
-	  Object.keys(_TwoColumn).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _TwoColumn[key];
-	      }
-	    });
-	  });
-	  Object.keys(_ThreeColumn).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _ThreeColumn[key];
-	      }
-	    });
-	  });
-	  Object.keys(_FourColumn).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _FourColumn[key];
-	      }
-	    });
-	  });
-	  Object.keys(_TwoToOne).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _TwoToOne[key];
-	      }
-	    });
-	  });
-	  Object.keys(_OneToTwo).forEach(function (key) {
-	    if (key === "default" || key === "__esModule") return;
-	    Object.defineProperty(exports, key, {
-	      enumerable: true,
-	      get: function () {
-	        return _OneToTwo[key];
-	      }
-	    });
-	  });
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(22), __webpack_require__(23)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Layout2, _Row) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.OneColumn = undefined;
-
-	    var _Layout3 = _interopRequireDefault(_Layout2);
-
-	    var _Row2 = _interopRequireDefault(_Row);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/8/10.
+	 */
+	function Report($scope, $element) {
+	    'ngInject';
+	    var Report = (function () {
+	        function Report() {
+	            var _this = this;
+	            $.extend(this, {
+	                title: '未命名报表',
+	                subtitle: '关于此报表的详细说明',
+	                blocs: [],
+	                widgets: [],
+	                getWidget: function (id) { return _.find(_this.widgets, { id: id }); }
+	            });
+	            Object.defineProperties(this, {
+	                $scope: {
+	                    get: function () { return $scope; }
+	                }
+	            });
+	        }
+	        Report.prototype.insertBloc = function (bloc) {
+	            $element.find('.report-body').append(bloc.render());
+	            this.blocs.push(bloc);
 	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
+	        Report.prototype.insertBlocAfter = function (pre, bloc) {
+	            var i = $.inArray(pre, this.blocs) + 1;
+	            if (i === 0) {
+	                this.insertBloc(bloc);
 	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
+	            else {
+	                bloc.render().insertAfter(pre.element);
+	                this.blocs.splice(i, 0, bloc);
+	            }
 	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
-	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
-
-	    var OneColumn = exports.OneColumn = function (_Layout) {
-	        _inherits(OneColumn, _Layout);
-
-	        _createClass(OneColumn, null, [{
-	            key: 'thumbnail',
-	            get: function get() {
-	                return $('\n            <div class="layout-thumbnail">\n                <div class="col-12"></div>\n            </div>\n        ');
-	            }
-	        }]);
-
-	        function OneColumn(bloc) {
-	            _classCallCheck(this, OneColumn);
-
-	            var _this = _possibleConstructorReturn(this, (OneColumn.__proto__ || Object.getPrototypeOf(OneColumn)).call(this, bloc));
-
-	            _this.addRow(new _Row2.default(12, 1));
-	            return _this;
-	        }
-
-	        _createClass(OneColumn, [{
-	            key: 'render',
-	            value: function render() {
-	                var _this2 = this;
-
-	                angular.forEach(this.rows, function (row) {
-	                    _this2.container.append(row.render());
+	        Report.prototype.removeBloc = function (bloc) {
+	            var _this = this;
+	            var i = -1;
+	            if ((i = $.inArray(bloc, this.blocs)) > -1) {
+	                $scope.$apply(function () {
+	                    _this.blocs.splice(i, 1);
 	                });
-	                return this.container;
 	            }
-	        }]);
+	        };
+	        return Report;
+	    }());
+	    var report = new Report(), self = this;
+	    Object.defineProperties(report, {
+	        $designer: {
+	            get: function () { return self; }
+	        }
+	    });
+	    return report;
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Report;
 
-	        return OneColumn;
-	    }(_Layout3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    /**
-	     * Created by yaoshining on 16/8/12.
-	     */
-
-	    function generateContainer() {
-	        var container = $('<div>').addClass('report-bloc');
-	        return container;
-	    }
-
-	    var Layout = function () {
-	        function Layout(bloc) {
-	            _classCallCheck(this, Layout);
-
-	            this.container = generateContainer();
-	            this.rows = [];
-	            Object.defineProperties(this, {
-	                bloc: {
-	                    get: function get() {
-	                        return bloc;
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/8/11.
+	 */
+	// import * as angular from 'angular';
+	var Layouts = __webpack_require__(23);
+	var Bloc = (function () {
+	    function Bloc(report) {
+	        var _this = this;
+	        var _layout = null;
+	        Object.defineProperties(this, {
+	            report: {
+	                get: function () { return report; }
+	            },
+	            layout: {
+	                get: function () { return _layout; },
+	                set: function (layout) {
+	                    if (_layout) {
+	                        _this.removeLayout();
 	                    }
+	                    _layout = layout;
+	                    var addBloc = $('<div>').addClass('add-bloc-btn').text('+').on('click', function () {
+	                        var bloc = new Bloc(_this.report);
+	                        _this.report.insertBlocAfter(_this, bloc);
+	                    }), el = layout.render();
+	                    el.append(addBloc);
+	                    _this.element.append(el);
 	                }
-	            });
+	            }
+	        });
+	    }
+	    Bloc.prototype.render = function () {
+	        this.element = renderEmptyElement.bind(this).call();
+	        return this.element;
+	    };
+	    Bloc.prototype.destroy = function () {
+	        this.element.remove();
+	    };
+	    Bloc.prototype.removeLayout = function () {
+	        this.layout.container.remove();
+	    };
+	    Bloc.prototype.toJSON = function () {
+	        var obj = $.extend({}, this);
+	        delete obj.element;
+	        delete obj.selectPane;
+	        obj.layout = this.layout;
+	        return obj;
+	    };
+	    return Bloc;
+	}());
+	function renderEmptyElement() {
+	    var _this = this;
+	    var root = $('<div>').addClass('report-bloc-wrapper');
+	    this.selectPane = new SelectPane(this);
+	    root.append(this.selectPane.render());
+	    setTimeout(function () {
+	        _this.selectPane.open();
+	    }, 0);
+	    $compile(root)(this.report.$scope);
+	    return root;
+	}
+	var SelectPane = (function () {
+	    function SelectPane(bloc) {
+	        Object.defineProperties(this, {
+	            bloc: {
+	                get: function () { return bloc; }
+	            },
+	            report: {
+	                get: function () { return bloc.report; }
+	            }
+	        });
+	    }
+	    SelectPane.prototype.render = function () {
+	        this.element = renderSelectPane.bind(this).call();
+	        return this.element;
+	    };
+	    SelectPane.prototype.open = function () {
+	        var _this = this;
+	        this.element.addClass('opened');
+	        $(document).one('click', function (event) {
+	            var parents = $(event.target).parents().addBack();
+	            if (parents.is('.select-pane')) {
+	                return false;
+	            }
+	            if (parents.is('.report-designer')) {
+	                _this.close();
+	            }
+	        });
+	    };
+	    SelectPane.prototype.close = function () {
+	        var _this = this;
+	        this.element.removeClass('opened');
+	        if (!this.bloc.layout) {
+	            setTimeout(function () {
+	                _this.bloc.destroy();
+	                _this.report.removeBloc(_this.bloc);
+	            }, 500);
 	        }
+	    };
+	    return SelectPane;
+	}());
+	function renderSelectPane() {
+	    var _this = this;
+	    var pane = $('<div>').addClass('select-pane assistant');
+	    var leftButton = $("\n            <span class=\"pull-left\">\n                <i class=\"fa fa-angle-left\"></i>\n            </span>\n        "), rightButton = $("\n            <span class=\"pull-right\">\n                <i class=\"fa fa-angle-right\"></i>\n            </span>\n        "), title = $('<div>').addClass('pane-title')
+	        .append(leftButton).append(rightButton);
+	    var body = $('<div>').addClass('pane-body');
+	    var list = $('<ul>').addClass('pane-h-list');
+	    angular.forEach(Layouts, function (Layout) {
+	        var thumbnail = Layout.thumbnail;
+	        list.append($('<li>').html(thumbnail));
+	        thumbnail.on('click', function () {
+	            _this.bloc.layout = new Layout(_this.bloc);
+	        });
+	    });
+	    body.append(list);
+	    pane.append(title).append(body);
+	    pane.on('click', function (event) {
+	        event.stopPropagation();
+	    });
+	    leftButton.on('click', function () {
+	        var currentPosition = parseInt(list.css('margin-left')), step = 300, endPoint = 0;
+	        currentPosition += step;
+	        if (currentPosition > endPoint) {
+	            currentPosition = endPoint;
+	        }
+	        list.stop(true, true).animate({
+	            'margin-left': currentPosition
+	        });
+	    });
+	    rightButton.on('click', function () {
+	        var currentPosition = parseInt(list.css('margin-left')), step = 300, endPoint = body.width() - list.width() + 20;
+	        currentPosition -= step;
+	        if (currentPosition < endPoint) {
+	            currentPosition = endPoint;
+	        }
+	        list.stop(true, true).animate({
+	            'margin-left': currentPosition
+	        });
+	    });
+	    $compile(pane)(this.report.$scope);
+	    return pane;
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Bloc;
 
-	        _createClass(Layout, [{
-	            key: 'render',
-	            value: function render() {
-	                return this.container;
-	            }
-	        }, {
-	            key: 'addRow',
-	            value: function addRow(row) {
-	                var _this = this;
-
-	                Object.defineProperties(row, {
-	                    layout: {
-	                        get: function get() {
-	                            return _this;
-	                        }
-	                    },
-	                    $designer: {
-	                        get: function get() {
-	                            return _this.bloc.report.$designer;
-	                        }
-	                    }
-	                });
-	                this.rows.push(row);
-	            }
-	        }, {
-	            key: 'toJSON',
-	            value: function toJSON() {
-	                var obj = $.extend({}, this);
-	                delete obj.container;
-	                return obj;
-	            }
-	        }]);
-
-	        return Layout;
-	    }();
-
-	    exports.default = Layout;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(24)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Column) {
-	    'use strict';
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	__export(__webpack_require__(24));
+	__export(__webpack_require__(28));
+	__export(__webpack_require__(29));
+	__export(__webpack_require__(30));
+	__export(__webpack_require__(31));
+	__export(__webpack_require__(32));
 
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.default = Row;
-
-	    var _Column2 = _interopRequireDefault(_Column);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function Row(size, colNum) {
-	        var _this = this;
-
-	        var element = $('<div>').addClass('report-row'),
-	            content = $('<div>').addClass('row-content'),
-	            cols = [];
-	        size = size || 12;
-
-	        Object.defineProperties(this, {
-	            cols: {
-	                get: function get() {
-	                    return cols;
-	                }
-	            },
-	            element: {
-	                get: function get() {
-	                    return element;
-	                }
-	            }
-	        });
-
-	        $.extend(this, {
-	            addColumn: function addColumn(col) {
-	                Object.defineProperties(col, {
-	                    $designer: {
-	                        get: function get() {
-	                            return _this.$designer;
-	                        }
-	                    }
-	                });
-	                cols.push(col);
-	            },
-	            render: function render() {
-	                element.addClass('col-md-' + size).addClass(size === 12 ? 'no-padding' : '');
-	                angular.forEach(cols, function (col, i) {
-	                    return content.append(col.render(i));
-	                });
-	                element.html(content);
-	                return element;
-	            },
-	            changeColsTo: function changeColsTo(num) {
-	                cols.length = 0;
-	                for (var i = 0; i < num; i++) {
-	                    var column = new _Column2.default(12 / num);
-	                    _this.addColumn(column);
-	                }
-	                content.empty();
-	                _this.render();
-	            },
-	            toJSON: function toJSON() {
-	                var obj = $.extend({}, _this);
-	                obj.cols = cols;
-	                obj.size = size;
-	                return obj;
-	            }
-	        });
-
-	        if (colNum) {
-	            for (var i = 0; i < colNum; i++) {
-	                var column = new _Column2.default(12 / colNum);
-	                this.addColumn(column);
-	            }
-	        }
-
-	        element.on({
-	            'click': function click(e) {
-	                if ($(e.target).parents().addBack().is('.report-widget')) {
-	                    return;
-	                }
-	                var sidemenu = _this.$designer.sidemenu;
-	                sidemenu.changeTab(2, 'src/designer/templates/row-props.tpl.html');
-	                _this.$designer.select(_this);
-	            },
-	            'mouseover': function mouseover(e) {
-	                if ($(e.target).parents().addBack().is('.report-widget')) {
-	                    content.removeClass('hover-intent');
-	                } else {
-	                    content.addClass('hover-intent');
-	                }
-	            }
-	        });
-
-	        content.hover(function () {
-	            content.addClass('hover-intent');
-	        }, function () {
-	            content.removeClass('hover-intent');
-	        });
-	    } /**
-	       * Created by yaoshining on 16/8/12.
-	       */
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.default = Column;
-	    /**
-	     * Created by yaoshining on 16/8/12.
-	     */
-	    function Column(size) {
-	        var _this = this;
-
-	        var element = $('<div>').addClass('report-col'),
-	            content = $('<div>').addClass('col-content');
-	        size = size || 12;
-
-	        Object.defineProperties(this, {
-	            size: {
-	                get: function get() {
-	                    return size;
-	                }
-	            }
-	        });
-
-	        $.extend(this, {
-	            render: function render(i) {
-	                element.addClass('col-xs-' + size);
-	                element.addClass('num-' + i);
-	                element.html(content);
-	                return element;
-	            },
-	            toJSON: function toJSON() {
-	                var obj = $.extend({}, _this);
-	                obj.size = size;
-	                return obj;
-	            }
-	        });
-
-	        content.on('click', function () {
-	            var widgetSelector = _this.$designer.widgetSelector;
-	            if (widgetSelector.enable) {
-	                var widget = new widgetSelector.selectedWidget();
-	                _this.$designer.report.widgets.push(widget);
-	                widget.report = _this.$designer.report;
-	                _this.content = {
-	                    id: widget.id
-	                };
-	                Object.defineProperties(widget, {
-	                    $designer: {
-	                        get: function get() {
-	                            return _this.$designer;
-	                        }
-	                    }
-	                });
-	                content.html(widget.render());
-	            }
-	        });
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	// import * as angular from 'angular';
+	var Layout_1 = __webpack_require__(25);
+	var Row_1 = __webpack_require__(26);
+	var OneColumn = (function (_super) {
+	    __extends(OneColumn, _super);
+	    function OneColumn(bloc) {
+	        _super.call(this, bloc);
+	        this.addRow(new Row_1.default(12, 1));
 	    }
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    Object.defineProperty(OneColumn, "thumbnail", {
+	        get: function () {
+	            return $("\n            <div class=\"layout-thumbnail\">\n                <div class=\"col-12\"></div>\n            </div>\n        ");
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    OneColumn.prototype.render = function () {
+	        var _this = this;
+	        angular.forEach(this.rows, function (row) {
+	            _this.container.append(row.render());
+	        });
+	        return this.container;
+	    };
+	    return OneColumn;
+	}(Layout_1.default));
+	exports.OneColumn = OneColumn;
+
 
 /***/ },
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(22), __webpack_require__(23)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Layout2, _Row) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.TwoColumn = undefined;
-
-	    var _Layout3 = _interopRequireDefault(_Layout2);
-
-	    var _Row2 = _interopRequireDefault(_Row);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	"use strict";
+	function generateContainer() {
+	    var container = $('<div>').addClass('report-bloc');
+	    return container;
+	}
+	var Layout = (function () {
+	    function Layout(bloc) {
+	        this.container = generateContainer();
+	        this.rows = [];
+	        Object.defineProperties(this, {
+	            bloc: {
+	                get: function () { return bloc; }
 	            }
 	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	    }
-
-	    var TwoColumn = exports.TwoColumn = function (_Layout) {
-	        _inherits(TwoColumn, _Layout);
-
-	        _createClass(TwoColumn, null, [{
-	            key: 'thumbnail',
-	            get: function get() {
-	                return $('\n            <div class="layout-thumbnail">\n                <div class="col-6"></div>\n                <div class="col-6"></div>\n            </div>\n        ');
+	    Layout.prototype.render = function () {
+	        return this.container;
+	    };
+	    Layout.prototype.addRow = function (row) {
+	        var _this = this;
+	        Object.defineProperties(row, {
+	            layout: {
+	                get: function () { return _this; }
+	            },
+	            $designer: {
+	                get: function () { return _this.bloc.report.$designer; }
 	            }
-	        }]);
+	        });
+	        this.rows.push(row);
+	    };
+	    Layout.prototype.toJSON = function () {
+	        var obj = $.extend({}, this);
+	        delete obj.container;
+	        return obj;
+	    };
+	    return Layout;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Layout;
 
-	        function TwoColumn(bloc) {
-	            _classCallCheck(this, TwoColumn);
-
-	            var _this = _possibleConstructorReturn(this, (TwoColumn.__proto__ || Object.getPrototypeOf(TwoColumn)).call(this, bloc));
-
-	            _this.addRow(new _Row2.default(12, 2));
-	            return _this;
-	        }
-
-	        _createClass(TwoColumn, [{
-	            key: 'render',
-	            value: function render() {
-	                var _this2 = this;
-
-	                angular.forEach(this.rows, function (row) {
-	                    _this2.container.append(row.render());
-	                });
-	                return this.container;
-	            }
-	        }]);
-
-	        return TwoColumn;
-	    }(_Layout3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(22), __webpack_require__(23)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Layout2, _Row) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	"use strict";
+	// import * as angular from 'angular';
+	var Column_1 = __webpack_require__(27);
+	function Row(size, colNum) {
+	    var _this = this;
+	    var element = $('<div>').addClass('report-row'), content = $('<div>').addClass('row-content'), cols = [];
+	    size = size || 12;
+	    Object.defineProperties(this, {
+	        cols: {
+	            get: function () { return cols; }
+	        },
+	        element: {
+	            get: function () { return element; }
+	        }
 	    });
-	    exports.ThreeColumn = undefined;
-
-	    var _Layout3 = _interopRequireDefault(_Layout2);
-
-	    var _Row2 = _interopRequireDefault(_Row);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
+	    $.extend(this, {
+	        addColumn: function (col) {
+	            Object.defineProperties(col, {
+	                $designer: {
+	                    get: function () { return _this.$designer; }
+	                }
+	            });
+	            cols.push(col);
+	        },
+	        render: function () {
+	            element.addClass('col-md-' + size).addClass(size === 12 ? 'no-padding' : '');
+	            angular.forEach(cols, function (col, i) { return content.append(col.render(i)); });
+	            element.empty().append(content);
+	            return element;
+	        },
+	        changeColsTo: function (num) {
+	            cols.length = 0;
+	            for (var i = 0; i < num; i++) {
+	                var column = new Column_1.default(12 / num);
+	                _this.addColumn(column);
+	            }
+	            content.empty();
+	            _this.render();
+	        },
+	        toJSON: function () {
+	            var obj = $.extend({}, _this);
+	            obj.cols = cols;
+	            obj.size = size;
+	            return obj;
+	        }
+	    });
+	    if (colNum) {
+	        for (var i = 0; i < colNum; i++) {
+	            var column = new Column_1.default(12 / colNum);
+	            this.addColumn(column);
 	        }
 	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
+	    element.on({
+	        'click': function (e) {
+	            if ($(e.target).parents().addBack().is('.report-widget')) {
+	                return;
+	            }
+	            var sidemenu = _this.$designer.sidemenu;
+	            sidemenu.changeTab(2, 'src/designer/templates/row-props.tpl.html');
+	            _this.$designer.select(_this);
+	        },
+	        'mouseover': function (e) {
+	            if ($(e.target).parents().addBack().is('.report-widget')) {
+	                content.removeClass('hover-intent');
+	            }
+	            else {
+	                content.addClass('hover-intent');
 	            }
 	        }
+	    });
+	    content.hover(function () {
+	        content.addClass('hover-intent');
+	    }, function () {
+	        content.removeClass('hover-intent');
+	    });
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Row;
 
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
-	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
-
-	    var ThreeColumn = exports.ThreeColumn = function (_Layout) {
-	        _inherits(ThreeColumn, _Layout);
-
-	        _createClass(ThreeColumn, null, [{
-	            key: 'thumbnail',
-	            get: function get() {
-	                return $('\n            <div class="layout-thumbnail">\n                <div class="col-4"></div>\n                <div class="col-4"></div>\n                <div class="col-4"></div>\n            </div>\n        ');
-	            }
-	        }]);
-
-	        function ThreeColumn(bloc) {
-	            _classCallCheck(this, ThreeColumn);
-
-	            var _this = _possibleConstructorReturn(this, (ThreeColumn.__proto__ || Object.getPrototypeOf(ThreeColumn)).call(this, bloc));
-
-	            _this.addRow(new _Row2.default(12, 3));
-	            return _this;
-	        }
-
-	        _createClass(ThreeColumn, [{
-	            key: 'render',
-	            value: function render() {
-	                var _this2 = this;
-
-	                angular.forEach(this.rows, function (row) {
-	                    _this2.container.append(row.render());
-	                });
-	                return this.container;
-	            }
-	        }]);
-
-	        return ThreeColumn;
-	    }(_Layout3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(22), __webpack_require__(23)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Layout2, _Row) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	function Column(size) {
+	    var _this = this;
+	    var element = $('<div>').addClass('report-col'), content = $('<div>').addClass('col-content');
+	    size = size || 12;
+	    Object.defineProperties(this, {
+	        size: {
+	            get: function () { return size; }
+	        }
 	    });
-	    exports.FourColumn = undefined;
-
-	    var _Layout3 = _interopRequireDefault(_Layout2);
-
-	    var _Row2 = _interopRequireDefault(_Row);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
+	    $.extend(this, {
+	        render: function (i) {
+	            element.addClass('col-xs-' + size);
+	            element.addClass('num-' + i);
+	            element.empty().append(content);
+	            return element;
+	        },
+	        toJSON: function () {
+	            var obj = $.extend({}, _this);
+	            obj.size = size;
+	            return obj;
 	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	    });
+	    content.on('click', function () {
+	        var widgetSelector = _this.$designer.widgetSelector;
+	        if (widgetSelector.enable) {
+	            var widget = new widgetSelector.selectedWidget();
+	            _this.$designer.report.widgets.push(widget);
+	            widget.report = _this.$designer.report;
+	            _this.content = {
+	                id: widget.id
+	            };
+	            Object.defineProperties(widget, {
+	                $designer: {
+	                    get: function () { return _this.$designer; }
+	                }
+	            });
+	            content.html(widget.render());
 	        }
+	    });
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Column;
 
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
-	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
-
-	    var FourColumn = exports.FourColumn = function (_Layout) {
-	        _inherits(FourColumn, _Layout);
-
-	        _createClass(FourColumn, null, [{
-	            key: 'thumbnail',
-	            get: function get() {
-	                return $('\n            <div class="layout-thumbnail">\n                <div class="col-3"></div>\n                <div class="col-3"></div>\n                <div class="col-3"></div>\n                <div class="col-3"></div>\n            </div>\n        ');
-	            }
-	        }]);
-
-	        function FourColumn(bloc) {
-	            _classCallCheck(this, FourColumn);
-
-	            var _this = _possibleConstructorReturn(this, (FourColumn.__proto__ || Object.getPrototypeOf(FourColumn)).call(this, bloc));
-
-	            _this.addRow(new _Row2.default(12, 4));
-	            return _this;
-	        }
-
-	        _createClass(FourColumn, [{
-	            key: 'render',
-	            value: function render() {
-	                var _this2 = this;
-
-	                angular.forEach(this.rows, function (row) {
-	                    _this2.container.append(row.render());
-	                });
-	                return this.container;
-	            }
-	        }]);
-
-	        return FourColumn;
-	    }(_Layout3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(22), __webpack_require__(23), __webpack_require__(24)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Layout2, _Row, _Column) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	// import * as angular from 'angular';
+	var Layout_1 = __webpack_require__(25);
+	var Row_1 = __webpack_require__(26);
+	var TwoColumn = (function (_super) {
+	    __extends(TwoColumn, _super);
+	    function TwoColumn(bloc) {
+	        _super.call(this, bloc);
+	        this.addRow(new Row_1.default(12, 2));
+	    }
+	    Object.defineProperty(TwoColumn, "thumbnail", {
+	        get: function () {
+	            return $("\n            <div class=\"layout-thumbnail\">\n                <div class=\"col-6\"></div>\n                <div class=\"col-6\"></div>\n            </div>\n        ");
+	        },
+	        enumerable: true,
+	        configurable: true
 	    });
-	    exports.TwoToOne = undefined;
-
-	    var _Layout3 = _interopRequireDefault(_Layout2);
-
-	    var _Row2 = _interopRequireDefault(_Row);
-
-	    var _Column2 = _interopRequireDefault(_Column);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
+	    TwoColumn.prototype.render = function () {
+	        var _this = this;
+	        angular.forEach(this.rows, function (row) {
+	            _this.container.append(row.render());
 	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
+	        return this.container;
+	    };
+	    return TwoColumn;
+	}(Layout_1.default));
+	exports.TwoColumn = TwoColumn;
 
-	    var TwoToOne = exports.TwoToOne = function (_Layout) {
-	        _inherits(TwoToOne, _Layout);
-
-	        _createClass(TwoToOne, null, [{
-	            key: 'thumbnail',
-	            get: function get() {
-	                return $('\n            <div class="layout-thumbnail">\n                <div class="col-8"></div>\n                <div class="col-4"></div>\n            </div>\n        ');
-	            }
-	        }]);
-
-	        function TwoToOne(bloc) {
-	            _classCallCheck(this, TwoToOne);
-
-	            var _this = _possibleConstructorReturn(this, (TwoToOne.__proto__ || Object.getPrototypeOf(TwoToOne)).call(this, bloc));
-
-	            var row = new _Row2.default(12);
-	            row.addColumn(new _Column2.default(8));
-	            row.addColumn(new _Column2.default(4));
-	            _this.addRow(row);
-	            return _this;
-	        }
-
-	        _createClass(TwoToOne, [{
-	            key: 'render',
-	            value: function render() {
-	                var _this2 = this;
-
-	                angular.forEach(this.rows, function (row) {
-	                    _this2.container.append(row.render());
-	                });
-	                return this.container;
-	            }
-	        }]);
-
-	        return TwoToOne;
-	    }(_Layout3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(22), __webpack_require__(23), __webpack_require__(24)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _Layout2, _Row, _Column) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	// import * as angular from 'angular';
+	var Layout_1 = __webpack_require__(25);
+	var Row_1 = __webpack_require__(26);
+	var ThreeColumn = (function (_super) {
+	    __extends(ThreeColumn, _super);
+	    function ThreeColumn(bloc) {
+	        _super.call(this, bloc);
+	        this.addRow(new Row_1.default(12, 3));
+	    }
+	    Object.defineProperty(ThreeColumn, "thumbnail", {
+	        get: function () {
+	            return $("\n            <div class=\"layout-thumbnail\">\n                <div class=\"col-4\"></div>\n                <div class=\"col-4\"></div>\n                <div class=\"col-4\"></div>\n            </div>\n        ");
+	        },
+	        enumerable: true,
+	        configurable: true
 	    });
-	    exports.OneToTwo = undefined;
-
-	    var _Layout3 = _interopRequireDefault(_Layout2);
-
-	    var _Row2 = _interopRequireDefault(_Row);
-
-	    var _Column2 = _interopRequireDefault(_Column);
-
-	    function _interopRequireDefault(obj) {
-	        return obj && obj.__esModule ? obj : {
-	            default: obj
-	        };
-	    }
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function _possibleConstructorReturn(self, call) {
-	        if (!self) {
-	            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	        }
-
-	        return call && (typeof call === "object" || typeof call === "function") ? call : self;
-	    }
-
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-
-	    function _inherits(subClass, superClass) {
-	        if (typeof superClass !== "function" && superClass !== null) {
-	            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	        }
-
-	        subClass.prototype = Object.create(superClass && superClass.prototype, {
-	            constructor: {
-	                value: subClass,
-	                enumerable: false,
-	                writable: true,
-	                configurable: true
-	            }
+	    ThreeColumn.prototype.render = function () {
+	        var _this = this;
+	        angular.forEach(this.rows, function (row) {
+	            _this.container.append(row.render());
 	        });
-	        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	    }
+	        return this.container;
+	    };
+	    return ThreeColumn;
+	}(Layout_1.default));
+	exports.ThreeColumn = ThreeColumn;
 
-	    var OneToTwo = exports.OneToTwo = function (_Layout) {
-	        _inherits(OneToTwo, _Layout);
-
-	        _createClass(OneToTwo, null, [{
-	            key: 'thumbnail',
-	            get: function get() {
-	                return $('\n            <div class="layout-thumbnail">\n                <div class="col-4"></div>\n                <div class="col-8"></div>\n            </div>\n        ');
-	            }
-	        }]);
-
-	        function OneToTwo(bloc) {
-	            _classCallCheck(this, OneToTwo);
-
-	            var _this = _possibleConstructorReturn(this, (OneToTwo.__proto__ || Object.getPrototypeOf(OneToTwo)).call(this, bloc));
-
-	            var row = new _Row2.default(12);
-	            row.addColumn(new _Column2.default(4));
-	            row.addColumn(new _Column2.default(8));
-	            _this.addRow(row);
-	            return _this;
-	        }
-
-	        _createClass(OneToTwo, [{
-	            key: 'render',
-	            value: function render() {
-	                var _this2 = this;
-
-	                angular.forEach(this.rows, function (row) {
-	                    _this2.container.append(row.render());
-	                });
-	                return this.container;
-	            }
-	        }]);
-
-	        return OneToTwo;
-	    }(_Layout3.default);
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(31), __webpack_require__(32)], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports, _table, _chart) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	// import * as angular from 'angular';
+	var Layout_1 = __webpack_require__(25);
+	var Row_1 = __webpack_require__(26);
+	var FourColumn = (function (_super) {
+	    __extends(FourColumn, _super);
+	    function FourColumn(bloc) {
+	        _super.call(this, bloc);
+	        this.addRow(new Row_1.default(12, 4));
+	    }
+	    Object.defineProperty(FourColumn, "thumbnail", {
+	        get: function () {
+	            return $("\n            <div class=\"layout-thumbnail\">\n                <div class=\"col-3\"></div>\n                <div class=\"col-3\"></div>\n                <div class=\"col-3\"></div>\n                <div class=\"col-3\"></div>\n            </div>\n        ");
+	        },
+	        enumerable: true,
+	        configurable: true
 	    });
-
-	    function _classCallCheck(instance, Constructor) {
-	        if (!(instance instanceof Constructor)) {
-	            throw new TypeError("Cannot call a class as a function");
-	        }
-	    }
-
-	    function ReportWidgetDirectiveFactory() {
-
-	        function linkFunc(scope, elem) {
-	            var widget = scope.widget;
-	            if (!widget) {
-	                return false;
-	            }
-	            scope.$on('yaoFullscreen.afterRender', function () {
-	                if (widget.category === 'chart') {
-	                    _chart.renderChart.$invoke(this, { scope: scope, elem: elem, widget: widget });
-	                }
-	                if (widget.category === 'table') {
-	                    _table.renderTable.$invoke(this, { scope: scope, elem: elem, widget: widget });
-	                }
-	            });
-	        }
-
-	        var directive = {
-	            restrict: 'AE',
-	            link: linkFunc,
-	            scope: {
-	                widget: '=ebpReportWidget'
-	            }
-	        };
-
-	        return directive;
-	    }
-
-	    var ReportWidgetController = function ReportWidgetController() {
-	        _classCallCheck(this, ReportWidgetController);
+	    FourColumn.prototype.render = function () {
+	        var _this = this;
+	        angular.forEach(this.rows, function (row) {
+	            _this.container.append(row.render());
+	        });
+	        return this.container;
 	    };
+	    return FourColumn;
+	}(Layout_1.default));
+	exports.FourColumn = FourColumn;
 
-	    exports.default = ReportWidgetDirectiveFactory;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
-	    exports.renderTable = renderTable;
-	    /**
-	     * Created by yaoshining on 2016/11/7.
-	     */
-	    function renderTable(scope, elem, $compile, widget, $http) {
-	        var tableTitle = $('<div>').addClass('report-widget-title').text(widget.config.title);
-	        var ebpTable = $('<div>', {
-	            'ebp-table': '$tableView.ebpTable',
-	            'settings': '$tableView.widgetSettings',
-	            'ng-model': '$tableView.tableData'
-	        });
-
-	        var widgetSettings = {
-	            "colDefs": getColDefs(widget)
-	        };
-
-	        scope.$tableView = {
-	            tableData: [],
-	            ebpTable: {},
-	            widgetSettings: widgetSettings
-	        };
-
-	        // const url = '/pms/project/report/getReportData';
-	        var url = '/data/reports/table/1.json'; // In cording to widget.report.dataSource object, get the data source url.;
-	        $http.get(url, {
-	            params: {
-	                dataSrcId: 1,
-	                widgetId: '4ac50dd7-a273-31fd-b16a-8f86d449ba2c'
-	            }
-	        }).then(function (res) {
-	            scope.$tableView.tableData = res.data;
-	            elem.append(tableTitle);
-	            elem.append($compile(ebpTable)(scope));
-	        });
-
-	        function getColDefs(widget) {
-	            var cols = [],
-	                config = widget.config;
-	            var displayFields = config.displayFields;
-
-	            displayFields.forEach(function (field) {
-	                var col = {
-	                    name: field.dataSrcItemName,
-	                    title: field.dataSrcItemLabel,
-	                    type: 'field',
-	                    dataType: 'string'
-	                };
-	                cols.push(col);
-	            });
-	            return { cols: cols };
-	        }
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	// import * as angular from 'angular';
+	var Layout_1 = __webpack_require__(25);
+	var Row_1 = __webpack_require__(26);
+	var Column_1 = __webpack_require__(27);
+	var TwoToOne = (function (_super) {
+	    __extends(TwoToOne, _super);
+	    function TwoToOne(bloc) {
+	        _super.call(this, bloc);
+	        var row = new Row_1.default(12);
+	        row.addColumn(new Column_1.default(8));
+	        row.addColumn(new Column_1.default(4));
+	        this.addRow(row);
 	    }
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    Object.defineProperty(TwoToOne, "thumbnail", {
+	        get: function () {
+	            return $("\n            <div class=\"layout-thumbnail\">\n                <div class=\"col-8\"></div>\n                <div class=\"col-4\"></div>\n            </div>\n        ");
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
+	    TwoToOne.prototype.render = function () {
+	        var _this = this;
+	        angular.forEach(this.rows, function (row) {
+	            _this.container.append(row.render());
+	        });
+	        return this.container;
+	    };
+	    return TwoToOne;
+	}(Layout_1.default));
+	exports.TwoToOne = TwoToOne;
+
 
 /***/ },
 /* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (exports) {
-	    'use strict';
-
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	/**
+	 * Created by yaoshining on 16/8/12.
+	 */
+	// import * as angular from 'angular';
+	var Layout_1 = __webpack_require__(25);
+	var Row_1 = __webpack_require__(26);
+	var Column_1 = __webpack_require__(27);
+	var OneToTwo = (function (_super) {
+	    __extends(OneToTwo, _super);
+	    function OneToTwo(bloc) {
+	        _super.call(this, bloc);
+	        var row = new Row_1.default(12);
+	        row.addColumn(new Column_1.default(4));
+	        row.addColumn(new Column_1.default(8));
+	        this.addRow(row);
+	    }
+	    Object.defineProperty(OneToTwo, "thumbnail", {
+	        get: function () {
+	            return $("\n            <div class=\"layout-thumbnail\">\n                <div class=\"col-4\"></div>\n                <div class=\"col-8\"></div>\n            </div>\n        ");
+	        },
+	        enumerable: true,
+	        configurable: true
 	    });
-	    exports.renderChart = renderChart;
-	    /**
-	     * Created by yaoshining on 2016/11/7.
-	     */
-	    function renderChart(elem, widget, $http, $window) {
-	        'ngInject';
+	    OneToTwo.prototype.render = function () {
+	        var _this = this;
+	        angular.forEach(this.rows, function (row) {
+	            _this.container.append(row.render());
+	        });
+	        return this.container;
+	    };
+	    return OneToTwo;
+	}(Layout_1.default));
+	exports.OneToTwo = OneToTwo;
 
-	        $http.get('/data/reports/salesVolumn.json').then(function (res) {
-	            var result = res.data,
-	                data = result.data;
-	            elem.height(400);
-	            if (typeof echarts === 'undefined') {
-	                if ($window.requirejs && angular.isFunction($window.requirejs)) {
-	                    $window.echarts = requirejs('echarts');
-	                }
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/**
+	 * Created by yaoshining on 16/8/24.
+	 */
+	var table_render_1 = __webpack_require__(34);
+	var chart_render_1 = __webpack_require__(35);
+	function ReportWidgetDirectiveFactory() {
+	    function linkFunc(scope, elem) {
+	        var widget = scope.widget;
+	        if (!widget) {
+	            return false;
+	        }
+	        scope.$on('yaoFullscreen.afterRender', function () {
+	            if (widget.category === 'chart') {
+	                chart_render_1.renderChart.$invoke(this, { scope: scope, elem: elem, widget: widget });
 	            }
-	            var chart = echarts.init(elem[0]),
-	                config = widget.config;
+	            if (widget.category === 'table') {
+	                table_render_1.renderTable.$invoke(this, { scope: scope, elem: elem, widget: widget });
+	            }
+	        });
+	    }
+	    var directive = {
+	        restrict: 'AE',
+	        link: linkFunc,
+	        scope: {
+	            widget: '=ebpReportWidget',
+	            report: '=report'
+	        }
+	    };
+	    return directive;
+	}
+	var ReportWidgetController = (function () {
+	    function ReportWidgetController() {
+	    }
+	    return ReportWidgetController;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ReportWidgetDirectiveFactory;
+
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Created by yaoshining on 2016/11/7.
+	 */
+	function renderTable(scope, elem, $compile, widget, reportWidgetService) {
+	    var tableTitle = $('<div>').addClass('report-widget-title').text(widget.config.title);
+	    var ebpTable = $('<div>', {
+	        'ebp-table': '$tableView.ebpTable',
+	        'settings': '$tableView.widgetSettings',
+	        'ng-model': '$tableView.tableData'
+	    });
+	    var widgetSettings = {
+	        "colDefs": getColDefs(widget)
+	    };
+	    var report = scope.report;
+	    scope.$tableView = {
+	        tableData: [],
+	        ebpTable: {},
+	        widgetSettings: widgetSettings
+	    };
+	    var params = {
+	        dataSrcId: report.seqId,
+	        widgetId: widget.id,
+	    };
+	    function fetchTableData(filterParams) {
+	        if (!angular.isObject(filterParams)) {
+	            filterParams = {};
+	        }
+	        params.filterParams = filterParams;
+	        reportWidgetService.getTableData(params).then(function (data) {
+	            if ($.isPlainObject(scope.$tableView.ebpTable)) {
+	                scope.$tableView.tableData = data;
+	                elem.empty().append(tableTitle);
+	                elem.empty().append($compile(ebpTable)(scope));
+	            }
+	            else {
+	                scope.$tableView.tableData = data;
+	            }
+	        });
+	    }
+	    fetchTableData();
+	    function getColDefs(widget) {
+	        var cols = [], config = widget.config;
+	        var displayFields = config.displayFields;
+	        displayFields.forEach(function (field) {
+	            var col = {
+	                name: field.dataSrcItemName,
+	                title: field.dataSrcItemLabel,
+	                type: 'field',
+	                dataType: 'string'
+	            };
+	            cols.push(col);
+	        });
+	        return { cols: cols };
+	    }
+	    scope.$on('ebp.report.refresh', function (event, args) {
+	        fetchTableData(args.filterParams);
+	    });
+	    //only for presentation
+	    setTimeout(function () {
+	        elem.find('.ebp-table-content').on('scroll', function () {
+	            var scrollLeft = $(this).prop('scrollLeft');
+	            elem.find('.ebp-table-header').css({
+	                transform: "matrix(1, 0, 0, 1, " + -scrollLeft + ", 0)"
+	            });
+	        });
+	    }, 3000);
+	}
+	exports.renderTable = renderTable;
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Created by yaoshining on 2016/11/7.
+	 */
+	function renderChart(scope, elem, widget, reportWidgetService) {
+	    'ngInject';
+	    var report = scope.report;
+	    var params = {
+	        dataSrcId: report.seqId,
+	        widgetId: widget.id
+	    };
+	    function fetchChartData(filterParams) {
+	        if (!angular.isObject(filterParams)) {
+	            filterParams = {};
+	        }
+	        params.filterParams = filterParams;
+	        reportWidgetService.getChartData(params).then(function (result) {
+	            var data = result.data;
+	            elem.height(400);
+	            var chart = echarts.init(elem[0]), config = widget.config;
 	            var xAxis = [];
 	            if (data.length > 0) {
-	                xAxis = data[0].datapoints.map(function (point) {
-	                    return point.x;
-	                });
+	                xAxis = data[0].datapoints.map(function (point) { return point.x; });
 	            }
 	            var options = {
 	                title: {
@@ -2993,9 +1787,7 @@
 	                },
 	                tooltip: {},
 	                legend: {
-	                    data: data.map(function (item) {
-	                        return item.name;
-	                    }),
+	                    data: data.map(function (item) { return item.name; }),
 	                    bottom: 0
 	                },
 	                toolbox: {
@@ -3017,31 +1809,78 @@
 	                    return {
 	                        name: item.name,
 	                        type: widget.type,
-	                        data: item.datapoints.map(function (point) {
-	                            return point.y;
-	                        })
+	                        data: item.datapoints.map(function (point) { return point.y; })
 	                    };
 	                })
 	            };
-
 	            chart.setOption(options);
 	            $(window).on('resize', function () {
 	                chart.resize();
 	            });
-
-	            // if(matchMedia) {
-	            //
-	            //     matchMedia('screen').addListener(() => {
-	            //         chart.resize();
-	            //     });
-	            //
-	            //     matchMedia('print').addListener(() => {
-	            //         chart.resize();
-	            //     });
-	            // }
 	        });
 	    }
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    fetchChartData();
+	    scope.$on('ebp.report.refresh', function (event, args) {
+	        fetchChartData(args.filterParams);
+	    });
+	}
+	exports.renderChart = renderChart;
+
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	"use strict";
+	/**
+	 * Created by yaoshining on 2016/12/21.
+	 */
+	function ReportListDirectiveFactory() {
+	    function linkFunc() {
+	    }
+	    var directive = {
+	        restrict: 'AE',
+	        templateUrl: 'src/designer/templates/list.tpl.html',
+	        link: linkFunc,
+	        controller: ReportListController
+	    };
+	    return directive;
+	}
+	var ReportListController = (function () {
+	    function ReportListController($scope, yaoFullscreen, reportService) {
+	        'ngInject';
+	        $scope.reports = [];
+	        $scope.groups = [];
+	        $scope.selectedGroupId = 1;
+	        function fetchReports() {
+	            reportService.getReportList($scope.selectedGroupId).then(function (data) {
+	                $scope.reports = data;
+	            });
+	        }
+	        fetchReports();
+	        reportService.getGroupList().then(function (data) {
+	            $scope.groups = data;
+	        });
+	        $scope.preview = function (reportDef) {
+	            yaoFullscreen.open({
+	                templateUrl: 'src/designer/templates/preview.tpl.html',
+	                controller: 'ReportPreviewController',
+	                controllerAs: '$preview',
+	                resolve: {
+	                    report: JSON.parse(reportDef)
+	                }
+	            });
+	        };
+	        $scope.changeGroup = function (group) {
+	            $scope.selectedGroupId = group.id;
+	            fetchReports();
+	        };
+	    }
+	    return ReportListController;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = ReportListDirectiveFactory;
+
 
 /***/ }
 /******/ ]);
@@ -3050,7 +1889,8 @@ $templateCache.put("src/designer/templates/charts-props.tpl.html","<div class=\"
 $templateCache.put("src/designer/templates/datasource-props.tpl.html","<div class=\"row-props\" ng-controller=\"DatasourcePropsController\"><div class=\"content-title\"><span>数据</span></div><div class=\"content-body\"><div class=\"prop-group\"><h1 class=\"square-blue\">属性</h1><div class=\"form-group\"><label class=\"prop-label col-sm-4\" for=\"dataSource\">数据来源</label><div class=\"prop-control col-sm-8\"><select class=\"prop-select\" id=\"dataSource\" ng-change=\"onDataSourceChange(report.dataSource)\" ng-model=\"report.dataSource\" ng-options=\"i.dataSrcName for i in dataSources track by i.seqId\"><option value=\"\">-- 选择数据源 --</option></select></div></div></div><div class=\"prop-group\"><h1 class=\"square-pink\">可查询字段</h1><div class=\"form-group\"><div class=\"prop-control col-sm-12\"><label ng-repeat=\"field in fields\"><input type=\"checkbox\" ng-model=\"field.$checked\" ng-change=\"onFilterFieldStatusChange(field)\"> {{field.dataSrcItemLabel}}</label></div></div></div></div></div>");
 $templateCache.put("src/designer/templates/designer.tpl.html","<div class=\"designer-menu assistant\" ng-class=\"{opened: sidemenu.opened}\"><div class=\"menu-inner\"><div class=\"menu-title\"><ul class=\"nav-tabs\"><li ng-class=\"{\'active\': sidemenu.activeTab.id === tab.id}\" ng-repeat=\"tab in sidemenu.tabs track by tab.id\"><a href=\"\" ng-click=\"sidemenu.changeTab(tab)\">{{tab.title}}</a></li></ul></div><div class=\"menu-content\"><div class=\"nav-content\"><div ng-include=\"sidemenu.activeTab.view.templateUrl\"></div></div></div></div></div><div class=\"designer-content\"><div class=\"designer-topbar assistant\"><a ng-click=\"$designer.preview()\" class=\"label label-primary\"><i class=\"fa fa-eye\"></i> 预览</a> <a class=\"label label-success\" ng-click=\"$designer.save()\"><i class=\"fa fa-save\"></i> 保存</a> <a href=\"\" class=\"pull-right\" ng-click=\"sidemenu.toggle($event)\"><span class=\"menu-button\"></span></a></div><div class=\"report-wrapper\" yao-scrollbar=\"\"><div class=\"report-header\"><h1><span yao-editable=\"$designer.report.title\"></span></h1><h3 yao-editable=\"$designer.report.subtitle\"></h3><span class=\"export-btn\"><button class=\"btn btn-info\">导出</button></span></div><div class=\"report-body\" ng-class=\"[$designer.cursor]\"><div ng-if=\"$designer.report.blocs.length <= 0\" class=\"empty-prompt assistant\" ng-click=\"$designer.addBloc()\"><h3>没有组件!</h3><p>此处是报表设计的预览界面，当前还没有任何可用于预览的组件，点击添加组件。</p></div></div></div><div class=\"widget-selector\" ng-show=\"$designer.widgetSelector.enable\"><ul class=\"widget-shortcut-list\"><li ng-click=\"$designer.widgetSelector.select(widget)\" ng-class=\"{\'active\': $designer.widgetSelector.selectedWidget === widget}\" ng-repeat=\"widget in $designer.widgetSelector.widgets\"><span class=\"shortcut-icon {{widget.name}}-icon\"></span></li><li><span class=\"shortcut-icon plus-icon\"></span></li></ul></div></div>");
 $templateCache.put("src/designer/templates/edit.tpl.html","<div ct-report-designer=\"\" report-id=\"$state.params.reportId\"></div>");
-$templateCache.put("src/designer/templates/preview.tpl.html","<div class=\"report-preview\" yao-scrollbar=\"\"><pre>{{$report | json:3}}</pre><div class=\"report-wrapper\"><div class=\"report-header\"><h1>{{$report.title}}</h1><h3>{{$report.subtitle}}</h3><span class=\"export-btn\"><button class=\"btn btn-info\">导出</button></span></div><form class=\"report-filter-form form-horizontal\" ng-if=\"$report.filterFields.length > 0\"><div class=\"col-md-6\" ng-repeat=\"field in $report.filterFields\"><div class=\"form-group\"><label for=\"field-input-{{field.seqId}}\" class=\"col-sm-4 control-label\">{{field.dataSrcItemLabel}}:</label><div class=\"col-sm-8\"><input type=\"text\" class=\"form-control\" id=\"field-input-{{field.seqId}}\" ng-if=\"field.dataSrcItemType === \'text\'\"><select class=\"form-control\" id=\"field-input-{{field.seqId}}\" ng-if=\"field.dataSrcItemType === \'select\'\"><option>选项1</option><option>选项2</option><option>选项3</option><option>选项4</option></select></div></div></div></form><div class=\"report-body\"><div class=\"report-bloc-wrapper\" ng-repeat=\"bloc in $report.blocs\"><div class=\"report-bloc\"><div class=\"report-row col-md-{{row.size || 12}}\" ng-class=\"{\'no-padding\': row.size === 12}\" ng-repeat=\"row in bloc.layout.rows\"><div class=\"row-content\"><div class=\"report-col col-xs-{{col.size || 12}}\" ng-repeat=\"col in row.cols\"><div class=\"col-content\"><div ebp-report-widget=\"$report.getWidget(col.content.id)\"></div></div></div></div></div></div></div></div></div></div><div class=\"report-preview-actions\"><button ng-click=\"$preview.close()\" class=\"btn btn-sup btn-danger\"><i class=\"fa fa-close\"></i> 关闭</button> <button ng-click=\"$preview.print()\" class=\"btn btn-sup btn-primary\"><i class=\"fa fa-print\"></i> 打印</button> <button ng-click=\"$preview.exportHTML()\" class=\"btn btn-sup btn-success\"><i class=\"fa fa-external-link\"></i> 导出HTML文本</button></div>");
+$templateCache.put("src/designer/templates/list.tpl.html","<div class=\"report-list-header\"><div><h5 class=\"v-line-title\">报表分组</h5><ul class=\"report-groups\"><li ng-class=\"{active: selectedGroupId === group.id}\" ng-repeat=\"group in groups track by group.id\"><a ng-click=\"changeGroup(group)\">{{group.name}}</a></li></ul><span class=\"pull-right\"><span class=\"btn btn-light-grey\"><i class=\"fa fa-refresh\"></i>刷新</span> <button class=\"btn btn-info\" ui-sref=\"collaborate.reports.add\">创建报表</button></span></div><div><form class=\"form-inline\"><select class=\"form-control\"><option>按创建时间排序</option><option>按修改时间排序</option><option>按报表名称排序</option></select><div class=\"form-group\"><input type=\"text\" class=\"form-control text-input\" placeholder=\"按报表名称搜索\"></div><button class=\"btn btn-info\">搜索</button></form></div></div><div class=\"report-list-body\"><ul class=\"report-list\"><li ng-repeat=\"report in reports track by report.id\"><div class=\"report-list-item\"><div class=\"item-title\"><span>{{report.reportName}}</span></div><div class=\"item-actions\"><span class=\"item-action\"><a ui-sref=\"collaborate.reports.edit({reportId: 123})\"><i class=\"fa fa-pencil\"></i>修改</a></span> <span class=\"item-action\" ng-click=\"preview(report.reportDef)\"><i class=\"fa fa-eye\"></i>查看</span> <span class=\"item-action\"><i class=\"fa fa-external-link\"></i>导出</span> <span class=\"item-action\"><i class=\"fa fa-files-o\"></i>复制</span> <span class=\"item-action red\"><i class=\"fa fa-trash\"></i>删除</span></div></div></li></ul></div>");
+$templateCache.put("src/designer/templates/preview.tpl.html","<div class=\"report-preview\" yao-scrollbar=\"\"><pre>{{$report | json:3}}</pre><div class=\"report-wrapper\"><div class=\"report-header\"><h1>{{$report.title}}</h1><h3>{{$report.subtitle}}</h3><span class=\"export-btn\"><button class=\"btn btn-info\">导出</button></span></div><form name=\"filterForm\" class=\"report-filter-form form-horizontal\" ng-if=\"$report.filterFields.length > 0\"><div class=\"col-md-6\" ng-repeat=\"field in $report.filterFields\"><div class=\"form-group\"><label for=\"field-input-{{field.seqId}}\" class=\"col-sm-4 control-label\">{{field.dataSrcItemLabel}}:</label><div class=\"col-sm-8\"><input type=\"text\" ng-model=\"filterParams[field.dataSrcItemName]\" name=\"{{field.dataSrcItemName}}\" class=\"form-control\" id=\"field-input-{{field.seqId}}\" ng-if=\"field.inputType === \'text\'\"><select class=\"form-control\" ng-model=\"filterParams[field.dataSrcItemName]\" name=\"{{field.dataSrcItemName}}\" id=\"field-input-{{field.seqId}}\" ng-if=\"field.inputType === \'select\'\"><option value=\"\">请选择</option><option value=\"{{o.name}}\" ng-repeat=\"o in getOptionData(field.seqId)\">{{o.name}}</option></select></div></div></div><div class=\"col-md-12\"><button ng-click=\"refreshReport()\" class=\"btn btn-success pull-right\"><i class=\"fa fa-search\"></i>查询</button></div></form><div class=\"report-body\"><div class=\"report-bloc-wrapper\" ng-repeat=\"bloc in $report.blocs\"><div class=\"report-bloc\"><div class=\"report-row col-md-{{row.size || 12}}\" ng-class=\"{\'no-padding\': row.size === 12}\" ng-repeat=\"row in bloc.layout.rows\"><div class=\"row-content\"><div class=\"report-col col-xs-{{col.size || 12}}\" ng-repeat=\"col in row.cols\"><div class=\"col-content\"><div ebp-report-widget=\"getWidget(col.content.id)\" report=\"$report\"></div></div></div></div></div></div></div></div></div></div><div class=\"report-preview-actions\"><button ng-click=\"$preview.close()\" class=\"btn btn-sup btn-material-pink\"><i class=\"fa fa-close\"></i> 关闭</button> <button ng-click=\"$preview.print()\" class=\"btn btn-sup btn-primary\"><i class=\"fa fa-print\"></i> 打印</button> <button ng-click=\"$preview.exportHTML()\" class=\"btn btn-sup btn-success\"><i class=\"fa fa-external-link\"></i> 导出HTML文本</button></div>");
 $templateCache.put("src/designer/templates/report-props.tpl.html","<div class=\"row-props\"><div class=\"content-title\"><span>报表</span></div><div class=\"content-body\"><div class=\"prop-group\"><h1 class=\"square-blue\">属性</h1><div class=\"form-group\"><label class=\"prop-label col-sm-4\" for=\"reportTitle\">标题</label><div class=\"prop-control col-sm-8\"><input class=\"prop-input\" ng-model=\"$designer.report.title\" id=\"reportTitle\"></div></div><div class=\"form-group\"><label class=\"prop-label col-sm-4\" for=\"reportSubtitle\">说明</label><div class=\"prop-control col-sm-8\"><textarea class=\"prop-textarea\" ng-model=\"$designer.report.subtitle\" id=\"reportSubtitle\"></textarea></div></div></div></div></div>");
 $templateCache.put("src/designer/templates/row-props.tpl.html","<div class=\"row-props\"><div class=\"content-title\"><span>行</span></div><div class=\"content-body\"><div class=\"prop-group\"><h1 class=\"square-blue\">样式</h1><div class=\"form-group\" ng-init=\"selected = $designer.selectedItem.cols.length\"><label class=\"prop-label col-sm-4\" for=\"columnsSel\">列数</label><div class=\"prop-control col-sm-8\"><select class=\"prop-select\" id=\"columnsSel\" ng-change=\"$designer.selectedItem.changeColsTo(selected)\" ng-model=\"selected\" ng-options=\"i for i in [1,2,3,4,6]\"></select></div></div></div></div></div>");
 $templateCache.put("src/designer/templates/table-props.tpl.html","<div class=\"chart-props\" ng-controller=\"TablePropsController\"><div class=\"content-title\"><span>{{$table.title}}</span></div><div class=\"content-body\"><div class=\"prop-group\"><h1 class=\"square-blue\">设置</h1><div class=\"form-group\"><label class=\"prop-label col-sm-4\" for=\"tableTitle\">标题</label><div class=\"prop-control col-sm-8\"><input class=\"prop-input\" ng-model=\"config.title\" id=\"tableTitle\"></div></div></div><div class=\"prop-group\"><h1 class=\"square-pink\">表头属性</h1><div class=\"form-group\"><div class=\"prop-control col-sm-12\"><label ng-repeat=\"field in fields\"><input type=\"checkbox\" ng-model=\"field.$checked\" ng-change=\"onFieldStatusChange(field)\"> {{field.dataSrcItemLabel}}</label></div></div></div></div></div>");}]);
