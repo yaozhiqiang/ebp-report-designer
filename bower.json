@@ -43,8 +43,8 @@
     "angular-sanitize": "~1.3.x",
     "angular-resource": "~1.3.x",
     "lodash": "~3.8.0",
-    "ebp-ui": "master",
-    "angular-yao-utils": "master",
+    "ebp-ui": "1.0.0",
+    "angular-yao-utils": "1.0.0",
     "echarts": "^3.3.1"
   },
   "overrides": {
